@@ -1,0 +1,39 @@
+# ATOMS.yml — catalog manifest for model-atoms
+#
+# See https://github.com/convergent-systems-co/atoms-spec for the canonical schema this conforms to.
+
+name: model-atoms
+version: 0.1.0
+spec: atoms-spec/v1
+domain: model-atoms.com
+ecosystem:
+  federation: xdao.co
+  redirect: model.xdao.co
+
+purpose: |
+  AI model definitions canonicalized — Claude, GPT, Llama, Gemini, Mistral variants with capabilities, context windows, pricing tiers, deprecation policy, tool-use shape, vision support, modality. One typed source-of-truth for what a model is, what it can do, and when it goes away.
+
+atomTypes:
+  - model-card
+  - capability
+  - pricing-tier
+  - deprecation-policy
+  - tool-use-shape
+  - modality
+
+compositionType: models
+compositionDir: models
+
+ruleTypes:
+  - model-compatibility
+  - capability-grant
+  - deprecation-window
+
+runtimeConsumers:
+  - aish
+  - olympus
+
+license: Apache-2.0
+maintainers:
+  - name: Convergent Systems
+    contact: maintainers@xdao.co
