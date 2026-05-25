@@ -1,6 +1,101 @@
 ---
-const title = "MODEL-Atoms";
-const tagline = "Model registry — capabilities, context windows, pricing. Part of the convergent-systems.co atoms ecosystem.";
+import catalog from '../../../sources/cloudflare-workers-ai.json';
+
+const models = catalog.models;
+
+function cfUrl(id: string) {
+  const slug = id.split('/').pop();
+  return `https://developers.cloudflare.com/workers-ai/models/${slug}/`;
+}
+
+const hfIds: Record<string, string> = {
+  '@cf/meta/llama-4-scout-17b-16e-instruct':       'meta-llama/Llama-4-Scout-17B-16E-Instruct',
+  '@cf/meta/llama-3.3-70b-instruct-fp8-fast':      'meta-llama/Llama-3.3-70B-Instruct',
+  '@cf/meta/llama-3.2-11b-vision-instruct':        'meta-llama/Llama-3.2-11B-Vision-Instruct',
+  '@cf/meta/llama-3.2-3b-instruct':                'meta-llama/Llama-3.2-3B-Instruct',
+  '@cf/meta/llama-3.2-1b-instruct':                'meta-llama/Llama-3.2-1B-Instruct',
+  '@cf/meta/llama-3.1-8b-instruct':                'meta-llama/Llama-3.1-8B-Instruct',
+  '@cf/meta/llama-3.1-8b-instruct-awq':            'meta-llama/Llama-3.1-8B-Instruct',
+  '@cf/meta/llama-3.1-8b-instruct-fp8':            'meta-llama/Llama-3.1-8B-Instruct',
+  '@cf/meta/llama-3.1-8b-instruct-fast':           'meta-llama/Llama-3.1-8B-Instruct',
+  '@cf/meta/llama-3.1-70b-instruct':               'meta-llama/Llama-3.1-70B-Instruct',
+  '@cf/meta/meta-llama-3-8b-instruct':             'meta-llama/Meta-Llama-3-8B-Instruct',
+  '@cf/meta/llama-3-8b-instruct-awq':              'meta-llama/Meta-Llama-3-8B-Instruct',
+  '@cf/meta/llama-3-8b-instruct':                  'meta-llama/Meta-Llama-3-8B-Instruct',
+  '@cf/meta/llama-2-7b-chat-fp16':                 'meta-llama/Llama-2-7b-chat-hf',
+  '@cf/meta/llama-2-7b-chat-int8':                 'meta-llama/Llama-2-7b-chat-hf',
+  '@cf/meta/llama-2-7b-chat-hf-lora':              'meta-llama/Llama-2-7b-chat-hf',
+  '@cf/meta/llama-guard-3-8b':                     'meta-llama/Llama-Guard-3-8B',
+  '@cf/meta/m2m100-1.2b':                          'facebook/m2m100_1.2B',
+  '@cf/meta/detr-resnet-50':                       'facebook/detr-resnet-50',
+  '@cf/meta/deepseek-r1-distill-qwen-32b':         'deepseek-ai/DeepSeek-R1-Distill-Qwen-32B',
+  '@cf/google/gemma-4-26b-a4b-it':                'google/gemma-4-26b-a4b-it',
+  '@cf/google/gemma-3-12b-it':                    'google/gemma-3-12b-it',
+  '@cf/google/gemma-7b-it':                       'google/gemma-7b-it',
+  '@cf/google/gemma-7b-it-lora':                  'google/gemma-7b-it',
+  '@cf/google/gemma-2b-it-lora':                  'google/gemma-2b-it',
+  '@cf/google/embeddinggemma-300m':               'google/gemma-embedding-300m',
+  '@cf/mistralai/mistral-small-3.1-24b-instruct': 'mistralai/Mistral-Small-3.1-24B-Instruct-2503',
+  '@cf/mistralai/mistral-7b-instruct-v0.2':       'mistralai/Mistral-7B-Instruct-v0.2',
+  '@cf/mistralai/mistral-7b-instruct-v0.2-lora':  'mistralai/Mistral-7B-Instruct-v0.2',
+  '@cf/mistralai/mistral-7b-instruct-v0.1':       'mistralai/Mistral-7B-Instruct-v0.1',
+  '@cf/qwen/qwen3-30b-a3b-fp8':                   'Qwen/Qwen3-30B-A3B',
+  '@cf/qwen/qwq-32b':                             'Qwen/QwQ-32B',
+  '@cf/qwen/qwen2.5-coder-32b-instruct':          'Qwen/Qwen2.5-Coder-32B-Instruct',
+  '@cf/qwen/qwen3-embedding-0.6b':                'Qwen/Qwen3-Embedding-0.6B',
+  '@cf/openai/whisper-large-v3-turbo':            'openai/whisper-large-v3-turbo',
+  '@cf/openai/whisper':                           'openai/whisper',
+  '@cf/openai/whisper-tiny-en':                   'openai/whisper-tiny.en',
+  '@cf/microsoft/phi-2':                          'microsoft/phi-2',
+  '@cf/microsoft/resnet-50':                      'microsoft/resnet-50',
+  '@cf/baai/bge-m3':                              'BAAI/bge-m3',
+  '@cf/baai/bge-large-en-v1.5':                   'BAAI/bge-large-en-v1.5',
+  '@cf/baai/bge-small-en-v1.5':                   'BAAI/bge-small-en-v1.5',
+  '@cf/baai/bge-base-en-v1.5':                    'BAAI/bge-base-en-v1.5',
+  '@cf/baai/bge-reranker-base':                   'BAAI/bge-reranker-base',
+  '@cf/black-forest-labs/flux-1-schnell':          'black-forest-labs/FLUX.1-schnell',
+  '@cf/black-forest-labs/flux-2-dev':              'black-forest-labs/FLUX.1-dev',
+  '@cf/stabilityai/stable-diffusion-xl-base-1.0': 'stabilityai/stable-diffusion-xl-base-1.0',
+  '@cf/runwayml/stable-diffusion-v1-5-img2img':   'runwayml/stable-diffusion-v1-5',
+  '@cf/runwayml/stable-diffusion-v1-5-inpainting':'runwayml/stable-diffusion-v1-5-inpainting',
+  '@cf/bytedance/stable-diffusion-xl-lightning':  'ByteDance/SDXL-Lightning',
+  '@cf/lykon/dreamshaper-8-lcm':                  'Lykon/dreamshaper-8-lcm',
+  '@cf/llava-hf/llava-1.5-7b-hf':                'llava-hf/llava-1.5-7b-hf',
+  '@cf/unum/uform-gen2-qwen-500m':                'unum-cloud/uform-gen2-qwen-500m',
+  '@cf/huggingface/distilbert-sst-2-int8':        'distilbert/distilbert-base-uncased-finetuned-sst-2-english',
+  '@cf/nousresearch/hermes-2-pro-mistral-7b':     'NousResearch/Hermes-2-Pro-Mistral-7B',
+  '@cf/defog/sqlcoder-7b-2':                      'defog/sqlcoder-7b-2',
+  '@cf/pfnet/plamo-embedding-1b':                 'pfnet/plamo-embedding-1b',
+  '@cf/ai4bharat/indictrans2-en-indic-1B':        'ai4bharat/indictrans2-en-indic-1B',
+  '@cf/myshell/melotts':                          'myshell-ai/MeloTTS-English',
+};
+
+const categoryLabels: Record<string, string> = {
+  'text-generation':              'Text Gen',
+  'text-to-image':                'Text→Image',
+  'text-to-speech':               'TTS',
+  'automatic-speech-recognition': 'ASR',
+  'text-embeddings':              'Embeddings',
+  'translation':                  'Translation',
+  'text-classification':          'Classification',
+  'image-to-text':                'Image→Text',
+  'voice-activity-detection':     'Voice Activity',
+  'object-detection':             'Object Detection',
+  'image-classification':         'Image Class.',
+};
+
+const capColors: Record<string, string> = {
+  'function-calling':  '#8be9fd',
+  'vision':            '#bd93f9',
+  'reasoning':         '#ffb86c',
+  'lora':              '#50fa7b',
+  'batch-processing':  '#6272a4',
+  'real-time':         '#f1fa8c',
+  'structured-output': '#ff79c6',
+};
+
+const categories = [...new Set(models.map((m: any) => m.category as string))].sort();
+const totalHf = models.filter((m: any) => hfIds[m.id]).length;
 ---
 
 <!doctype html>
@@ -8,44 +103,234 @@ const tagline = "Model registry — capabilities, context windows, pricing. Part
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={tagline} />
-    <title>{title}</title>
+    <meta name="description" content="Browse and compare AI models on Cloudflare Workers AI — capabilities, context windows, CF docs and HuggingFace download links." />
+    <title>MODEL-Atoms — Cloudflare Workers AI Catalog</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <style>
       :root {
-        --bg: #0b0d10;
-        --fg: #e8e8e6;
-        --muted: #7a8088;
-        --accent: #8be9fd;
+        --bg:      #0b0d10;
+        --surface: #11141a;
+        --border:  #1f242a;
+        --fg:      #e8e8e6;
+        --muted:   #7a8088;
+        --accent:  #8be9fd;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        font-size: 14px;
       }
-      * { box-sizing: border-box; }
+      *, *::before, *::after { box-sizing: border-box; }
       html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
-      body { min-height: 100vh; display: grid; place-items: center; padding: 2rem; line-height: 1.5; }
-      main { max-width: 42rem; text-align: left; }
-      h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin: 0 0 0.5rem; font-weight: 600; letter-spacing: -0.03em; }
-      .tagline { color: var(--muted); margin: 0 0 2rem; font-size: 1.125rem; }
-      .status { border: 1px solid #1f242a; border-left: 3px solid var(--accent); padding: 1rem 1.25rem; background: #11141a; border-radius: 4px; }
-      .status p { margin: 0 0 0.5rem; }
-      .status p:last-child { margin-bottom: 0; }
-      code { background: #1a1f26; padding: 0.1em 0.4em; border-radius: 3px; font-size: 0.9em; }
-      a { color: var(--accent); text-decoration: none; }
-      a:hover { text-decoration: underline; }
-      footer { color: var(--muted); margin-top: 3rem; font-size: 0.875rem; }
+      body { display: flex; flex-direction: column; min-height: 100vh; }
+
+      header { padding: 1.75rem 1.5rem 1.25rem; border-bottom: 1px solid var(--border); }
+      .main  { padding: 1rem 1.5rem 3rem; flex: 1; overflow-x: auto; }
+      footer {
+        padding: .875rem 1.5rem; border-top: 1px solid var(--border);
+        color: var(--muted); font-size: .8rem;
+        display: flex; gap: 1.5rem; flex-wrap: wrap;
+      }
+      footer a { color: var(--muted); text-decoration: none; }
+      footer a:hover { color: var(--fg); }
+
+      h1 { margin: 0 0 .2rem; font-size: 1.6rem; font-weight: 600; letter-spacing: -.02em; }
+      .tagline { color: var(--muted); margin: 0 0 .875rem; font-size: .9rem; }
+      .stats { display: flex; gap: 1.5rem; font-size: .8rem; color: var(--muted); flex-wrap: wrap; }
+      .stats b { color: var(--fg); font-weight: 500; }
+
+      .controls {
+        display: flex; flex-wrap: wrap; gap: .625rem;
+        align-items: center; margin-bottom: .875rem;
+      }
+      #search {
+        background: var(--surface); border: 1px solid var(--border); color: var(--fg);
+        padding: .35rem .7rem; border-radius: 4px; font-size: .85rem; width: 220px; outline: none;
+      }
+      #search:focus { border-color: var(--accent); }
+      #search::placeholder { color: var(--muted); }
+
+      .filters { display: flex; flex-wrap: wrap; gap: .3rem; }
+      .filter-btn {
+        background: var(--surface); border: 1px solid var(--border); color: var(--muted);
+        padding: .2rem .55rem; border-radius: 3px; font-size: .72rem; cursor: pointer;
+        transition: border-color .1s, color .1s, background .1s;
+      }
+      .filter-btn:hover, .filter-btn.active {
+        border-color: var(--accent); color: var(--fg);
+      }
+      .filter-btn.active { background: #0d2a35; }
+
+      #count { color: var(--muted); font-size: .78rem; margin-bottom: .5rem; }
+
+      table { width: 100%; border-collapse: collapse; min-width: 700px; }
+      thead th {
+        text-align: left; font-size: .68rem; font-weight: 500;
+        text-transform: uppercase; letter-spacing: .06em; color: var(--muted);
+        padding: .45rem .7rem; border-bottom: 1px solid var(--border); white-space: nowrap;
+      }
+      tbody tr { border-bottom: 1px solid var(--border); transition: background .08s; }
+      tbody tr:hover { background: var(--surface); }
+      tbody tr.hidden { display: none; }
+      td { padding: .55rem .7rem; vertical-align: middle; }
+
+      .model-id     { font-family: ui-monospace, monospace; font-size: .8rem; font-weight: 500; }
+      .model-sub    { font-size: .72rem; color: var(--muted); margin-top: .1rem; }
+      .deprecated .model-id::after {
+        content: 'deprecated'; font-size: .62rem; background: #200d0d;
+        color: #ff5555; border: 1px solid #3d1515; border-radius: 2px;
+        padding: .05em .3em; margin-left: .45rem; vertical-align: middle;
+        font-family: inherit; font-weight: 400;
+      }
+      .deprecated { opacity: .55; }
+
+      .cat {
+        font-size: .68rem; padding: .12rem .4rem; border-radius: 3px;
+        background: #1a1f26; border: 1px solid var(--border); color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .caps { display: flex; flex-wrap: wrap; gap: .25rem; }
+      .cap  {
+        font-size: .65rem; padding: .08rem .35rem; border-radius: 2px;
+        border: 1px solid; white-space: nowrap;
+      }
+
+      .links { display: flex; gap: .4rem; flex-wrap: wrap; }
+      .link  {
+        display: inline-flex; align-items: center; gap: .2rem; font-size: .72rem;
+        padding: .18rem .45rem; border-radius: 3px; border: 1px solid var(--border);
+        color: var(--muted); text-decoration: none; background: var(--surface);
+        transition: border-color .1s, color .1s; white-space: nowrap;
+      }
+      .link:hover { border-color: var(--accent); color: var(--fg); }
+      .link svg { flex-shrink: 0; }
     </style>
   </head>
   <body>
-    <main>
-      <h1>{title}</h1>
-      <p class="tagline">{tagline}</p>
-      <div class="status">
-        <p><strong>Status:</strong> bootstrap. Catalog content lands once the canonical <code>model</code> schema is published in <a href="https://github.com/convergent-systems-co/schema-atoms">schema-atoms</a>.</p>
-        <p>Source: <a href="https://github.com/convergent-systems-co/model-atoms">github.com/convergent-systems-co/model-atoms</a></p>
+    <header>
+      <h1>MODEL-Atoms</h1>
+      <p class="tagline">Cloudflare Workers AI — browse, compare, download</p>
+      <div class="stats">
+        <div><b>{models.length}</b> models</div>
+        <div><b>{categories.length}</b> categories</div>
+        <div><b>{totalHf}</b> with HuggingFace weights</div>
+        <div><b>{models.filter((m: any) => !m.planned_deprecation).length}</b> active</div>
       </div>
-      <footer>
-        Part of the <a href="https://github.com/convergent-systems-co/atoms">atoms ecosystem</a>.
-        Apache-2.0.
-      </footer>
-    </main>
+    </header>
+
+    <div class="main">
+      <div class="controls">
+        <input id="search" type="search" placeholder="Search models…" autocomplete="off" />
+        <div class="filters">
+          <button class="filter-btn active" data-cat="all">All</button>
+          {categories.map((cat: string) => (
+            <button class="filter-btn" data-cat={cat}>
+              {categoryLabels[cat] ?? cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div id="count">{models.length} models</div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Category</th>
+            <th>Capabilities</th>
+            <th>Download / Access</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          {models.map((m: any) => {
+            const hfId  = hfIds[m.id];
+            const hfUrl = hfId ? `https://huggingface.co/${hfId}` : null;
+            const cfLink = cfUrl(m.id);
+            return (
+              <tr
+                class={m.planned_deprecation ? 'deprecated' : ''}
+                data-cat={m.category}
+                data-name={`${m.name} ${m.vendor} ${m.id}`.toLowerCase()}
+              >
+                <td>
+                  <div class="model-id">{m.id.replace('@cf/', '')}</div>
+                  <div class="model-sub">{m.vendor} · {m.family}</div>
+                </td>
+                <td>
+                  <span class="cat">{categoryLabels[m.category] ?? m.category}</span>
+                </td>
+                <td>
+                  <div class="caps">
+                    {(m.capabilities as string[]).map((cap: string) => (
+                      <span
+                        class="cap"
+                        style={`color:${capColors[cap]??'#aaa'};border-color:${capColors[cap]??'#aaa'}33;background:${capColors[cap]??'#aaa'}11`}
+                      >{cap}</span>
+                    ))}
+                  </div>
+                </td>
+                <td>
+                  <div class="links">
+                    <a class="link" href={cfLink} target="_blank" rel="noopener">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                      </svg>
+                      CF Docs
+                    </a>
+                    {hfUrl && (
+                      <a class="link" href={hfUrl} target="_blank" rel="noopener">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                          <circle cx="12" cy="12" r="10"/>
+                          <path d="M12 8v4m0 4h.01"/>
+                        </svg>
+                        HuggingFace
+                      </a>
+                    )}
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      <a href="https://github.com/convergent-systems-co/model-atoms">github</a>
+      <a href="https://developers.cloudflare.com/workers-ai/models/">cloudflare workers ai</a>
+      <span>Apache-2.0 · <a href="https://xdao.co">xdao.co</a> ecosystem</span>
+    </footer>
+
+    <script>
+      const rows    = Array.from(document.querySelectorAll<HTMLTableRowElement>('#tbody tr'));
+      const countEl = document.getElementById('count')!;
+      const search  = document.getElementById('search') as HTMLInputElement;
+      const btns    = Array.from(document.querySelectorAll<HTMLButtonElement>('.filter-btn'));
+
+      let cat  = 'all';
+      let term = '';
+
+      function refresh() {
+        let n = 0;
+        for (const r of rows) {
+          const ok = (cat === 'all' || r.dataset.cat === cat)
+                  && (!term || (r.dataset.name ?? '').includes(term));
+          r.classList.toggle('hidden', !ok);
+          if (ok) n++;
+        }
+        countEl.textContent = `${n} model${n !== 1 ? 's' : ''}`;
+      }
+
+      search.addEventListener('input', () => { term = search.value.toLowerCase().trim(); refresh(); });
+
+      for (const b of btns) {
+        b.addEventListener('click', () => {
+          cat = b.dataset.cat ?? 'all';
+          btns.forEach(x => x.classList.toggle('active', x === b));
+          refresh();
+        });
+      }
+    </script>
   </body>
 </html>
