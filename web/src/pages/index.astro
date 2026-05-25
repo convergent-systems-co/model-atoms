@@ -1,6 +1,101 @@
 ---
-const title = "MODEL-Atoms";
-const tagline = "Model registry — capabilities, context windows, pricing. Part of the convergent-systems.co atoms ecosystem.";
+import catalog from '../../../sources/cloudflare-workers-ai.json';
+
+const models = catalog.models as any[];
+
+function cfUrl(id: string) {
+  return `https://developers.cloudflare.com/workers-ai/models/${id.split('/').pop()}/`;
+}
+
+const hfIds: Record<string, string> = {
+  '@cf/meta/llama-4-scout-17b-16e-instruct':       'meta-llama/Llama-4-Scout-17B-16E-Instruct',
+  '@cf/meta/llama-3.3-70b-instruct-fp8-fast':      'meta-llama/Llama-3.3-70B-Instruct',
+  '@cf/meta/llama-3.2-11b-vision-instruct':        'meta-llama/Llama-3.2-11B-Vision-Instruct',
+  '@cf/meta/llama-3.2-3b-instruct':                'meta-llama/Llama-3.2-3B-Instruct',
+  '@cf/meta/llama-3.2-1b-instruct':                'meta-llama/Llama-3.2-1B-Instruct',
+  '@cf/meta/llama-3.1-8b-instruct':                'meta-llama/Llama-3.1-8B-Instruct',
+  '@cf/meta/llama-3.1-8b-instruct-awq':            'meta-llama/Llama-3.1-8B-Instruct',
+  '@cf/meta/llama-3.1-8b-instruct-fp8':            'meta-llama/Llama-3.1-8B-Instruct',
+  '@cf/meta/llama-3.1-8b-instruct-fast':           'meta-llama/Llama-3.1-8B-Instruct',
+  '@cf/meta/llama-3.1-70b-instruct':               'meta-llama/Llama-3.1-70B-Instruct',
+  '@cf/meta/meta-llama-3-8b-instruct':             'meta-llama/Meta-Llama-3-8B-Instruct',
+  '@cf/meta/llama-3-8b-instruct-awq':              'meta-llama/Meta-Llama-3-8B-Instruct',
+  '@cf/meta/llama-3-8b-instruct':                  'meta-llama/Meta-Llama-3-8B-Instruct',
+  '@cf/meta/llama-2-7b-chat-fp16':                 'meta-llama/Llama-2-7b-chat-hf',
+  '@cf/meta/llama-2-7b-chat-int8':                 'meta-llama/Llama-2-7b-chat-hf',
+  '@cf/meta/llama-2-7b-chat-hf-lora':              'meta-llama/Llama-2-7b-chat-hf',
+  '@cf/meta/llama-guard-3-8b':                     'meta-llama/Llama-Guard-3-8B',
+  '@cf/meta/m2m100-1.2b':                          'facebook/m2m100_1.2B',
+  '@cf/meta/detr-resnet-50':                       'facebook/detr-resnet-50',
+  '@cf/meta/deepseek-r1-distill-qwen-32b':         'deepseek-ai/DeepSeek-R1-Distill-Qwen-32B',
+  '@cf/google/gemma-4-26b-a4b-it':                'google/gemma-4-26b-a4b-it',
+  '@cf/google/gemma-3-12b-it':                    'google/gemma-3-12b-it',
+  '@cf/google/gemma-7b-it':                       'google/gemma-7b-it',
+  '@cf/google/gemma-7b-it-lora':                  'google/gemma-7b-it',
+  '@cf/google/gemma-2b-it-lora':                  'google/gemma-2b-it',
+  '@cf/google/embeddinggemma-300m':               'google/gemma-embedding-300m',
+  '@cf/mistralai/mistral-small-3.1-24b-instruct': 'mistralai/Mistral-Small-3.1-24B-Instruct-2503',
+  '@cf/mistralai/mistral-7b-instruct-v0.2':       'mistralai/Mistral-7B-Instruct-v0.2',
+  '@cf/mistralai/mistral-7b-instruct-v0.2-lora':  'mistralai/Mistral-7B-Instruct-v0.2',
+  '@cf/mistralai/mistral-7b-instruct-v0.1':       'mistralai/Mistral-7B-Instruct-v0.1',
+  '@cf/qwen/qwen3-30b-a3b-fp8':                   'Qwen/Qwen3-30B-A3B',
+  '@cf/qwen/qwq-32b':                             'Qwen/QwQ-32B',
+  '@cf/qwen/qwen2.5-coder-32b-instruct':          'Qwen/Qwen2.5-Coder-32B-Instruct',
+  '@cf/qwen/qwen3-embedding-0.6b':                'Qwen/Qwen3-Embedding-0.6B',
+  '@cf/openai/whisper-large-v3-turbo':            'openai/whisper-large-v3-turbo',
+  '@cf/openai/whisper':                           'openai/whisper',
+  '@cf/openai/whisper-tiny-en':                   'openai/whisper-tiny.en',
+  '@cf/microsoft/phi-2':                          'microsoft/phi-2',
+  '@cf/microsoft/resnet-50':                      'microsoft/resnet-50',
+  '@cf/baai/bge-m3':                              'BAAI/bge-m3',
+  '@cf/baai/bge-large-en-v1.5':                   'BAAI/bge-large-en-v1.5',
+  '@cf/baai/bge-small-en-v1.5':                   'BAAI/bge-small-en-v1.5',
+  '@cf/baai/bge-base-en-v1.5':                    'BAAI/bge-base-en-v1.5',
+  '@cf/baai/bge-reranker-base':                   'BAAI/bge-reranker-base',
+  '@cf/black-forest-labs/flux-1-schnell':          'black-forest-labs/FLUX.1-schnell',
+  '@cf/black-forest-labs/flux-2-dev':              'black-forest-labs/FLUX.1-dev',
+  '@cf/stabilityai/stable-diffusion-xl-base-1.0': 'stabilityai/stable-diffusion-xl-base-1.0',
+  '@cf/runwayml/stable-diffusion-v1-5-img2img':   'runwayml/stable-diffusion-v1-5',
+  '@cf/runwayml/stable-diffusion-v1-5-inpainting':'runwayml/stable-diffusion-v1-5-inpainting',
+  '@cf/bytedance/stable-diffusion-xl-lightning':  'ByteDance/SDXL-Lightning',
+  '@cf/lykon/dreamshaper-8-lcm':                  'Lykon/dreamshaper-8-lcm',
+  '@cf/llava-hf/llava-1.5-7b-hf':                'llava-hf/llava-1.5-7b-hf',
+  '@cf/unum/uform-gen2-qwen-500m':                'unum-cloud/uform-gen2-qwen-500m',
+  '@cf/huggingface/distilbert-sst-2-int8':        'distilbert/distilbert-base-uncased-finetuned-sst-2-english',
+  '@cf/nousresearch/hermes-2-pro-mistral-7b':     'NousResearch/Hermes-2-Pro-Mistral-7B',
+  '@cf/defog/sqlcoder-7b-2':                      'defog/sqlcoder-7b-2',
+  '@cf/pfnet/plamo-embedding-1b':                 'pfnet/plamo-embedding-1b',
+  '@cf/ai4bharat/indictrans2-en-indic-1B':        'ai4bharat/indictrans2-en-indic-1B',
+  '@cf/myshell/melotts':                          'myshell-ai/MeloTTS-English',
+};
+
+const categoryLabels: Record<string, string> = {
+  'text-generation':              'Text Gen',
+  'text-to-image':                'Text→Image',
+  'text-to-speech':               'TTS',
+  'automatic-speech-recognition': 'ASR',
+  'text-embeddings':              'Embeddings',
+  'translation':                  'Translation',
+  'text-classification':          'Classification',
+  'image-to-text':                'Image→Text',
+  'voice-activity-detection':     'Voice Activity',
+  'object-detection':             'Object Detection',
+  'image-classification':         'Image Class.',
+};
+
+const capColors: Record<string, string> = {
+  'function-calling':  '#8be9fd',
+  'vision':            '#bd93f9',
+  'reasoning':         '#ffb86c',
+  'lora':              '#50fa7b',
+  'batch-processing':  '#6272a4',
+  'real-time':         '#f1fa8c',
+  'structured-output': '#ff79c6',
+};
+
+const categories = [...new Set(models.map(m => m.category as string))].sort();
+const activeCount = models.filter(m => !m.planned_deprecation).length;
+const hfCount = models.filter(m => hfIds[m.id]).length;
 ---
 
 <!doctype html>
@@ -8,8 +103,8 @@ const tagline = "Model registry — capabilities, context windows, pricing. Part
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={tagline} />
-    <title>{title}</title>
+    <meta name="description" content="Browse and compare AI models on Cloudflare Workers AI — capabilities, context windows, and download links." />
+    <title>model-atoms</title>
     <link rel="icon" type="image/svg+xml" href="https://brand-atoms.com/dist/brands/atom-family/1.0.0/assets/favicon.svg" />
     <link rel="preconnect" href="https://brand-atoms.com" />
     <link rel="stylesheet" href="https://brand-atoms.com/dist/brands/atom-family/1.0.0/css/tokens.css" />
@@ -18,6 +113,60 @@ const tagline = "Model registry — capabilities, context windows, pricing. Part
       body { min-height: 100vh; }
       .hero-mark { width: 160px; height: 160px; margin-bottom: 20px; object-fit: contain; }
       .sidenav-wordmark { width: 140px; object-fit: contain; display: block; }
+
+      /* catalog browser */
+      .catalog-controls { display: flex; flex-wrap: wrap; gap: .625rem; align-items: center; margin: 1.5rem 0 .75rem; }
+      .catalog-search {
+        background: var(--surface, #11141a); border: 1px solid var(--border, #1f242a);
+        color: var(--fg, #e8e8e6); padding: .35rem .7rem; border-radius: 4px;
+        font-size: .85rem; width: 220px; outline: none;
+        font-family: inherit;
+      }
+      .catalog-search:focus { border-color: var(--accent, #8be9fd); }
+      .catalog-search::placeholder { color: var(--muted, #7a8088); }
+      .cat-filters { display: flex; flex-wrap: wrap; gap: .3rem; }
+      .cat-btn {
+        background: var(--surface, #11141a); border: 1px solid var(--border, #1f242a);
+        color: var(--muted, #7a8088); padding: .2rem .55rem; border-radius: 3px;
+        font-size: .72rem; cursor: pointer; font-family: inherit;
+        transition: border-color .1s, color .1s, background .1s;
+      }
+      .cat-btn:hover, .cat-btn.active { border-color: var(--accent, #8be9fd); color: var(--fg, #e8e8e6); }
+      .cat-btn.active { background: color-mix(in srgb, var(--accent, #8be9fd) 10%, transparent); }
+      #catalog-count { font-size: .78rem; color: var(--muted, #7a8088); margin-bottom: .5rem; }
+      .catalog-table { width: 100%; border-collapse: collapse; min-width: 640px; font-size: .85rem; }
+      .catalog-table thead th {
+        text-align: left; font-size: .68rem; font-weight: 500; text-transform: uppercase;
+        letter-spacing: .06em; color: var(--muted, #7a8088);
+        padding: .4rem .6rem; border-bottom: 1px solid var(--border, #1f242a); white-space: nowrap;
+      }
+      .catalog-table tbody tr { border-bottom: 1px solid var(--border, #1f242a); }
+      .catalog-table tbody tr:hover { background: var(--surface, #11141a); }
+      .catalog-table tbody tr.hidden { display: none; }
+      .catalog-table td { padding: .5rem .6rem; vertical-align: middle; }
+      .model-id { font-family: ui-monospace, monospace; font-size: .78rem; font-weight: 500; }
+      .model-sub { font-size: .7rem; color: var(--muted, #7a8088); margin-top: .1rem; }
+      .model-dep .model-id::after {
+        content: 'deprecated'; font-size: .6rem; background: #200d0d; color: #ff5555;
+        border: 1px solid #3d1515; border-radius: 2px; padding: .04em .3em;
+        margin-left: .4rem; vertical-align: middle; font-family: inherit; font-weight: 400;
+      }
+      .model-dep { opacity: .55; }
+      .cat-badge {
+        font-size: .67rem; padding: .1rem .38rem; border-radius: 3px;
+        background: var(--surface, #11141a); border: 1px solid var(--border, #1f242a);
+        color: var(--muted, #7a8088); white-space: nowrap;
+      }
+      .cap-tags { display: flex; flex-wrap: wrap; gap: .25rem; }
+      .cap-tag { font-size: .63rem; padding: .07rem .32rem; border-radius: 2px; border: 1px solid; white-space: nowrap; }
+      .dl-links { display: flex; gap: .35rem; flex-wrap: wrap; }
+      .dl-link {
+        display: inline-flex; align-items: center; gap: .2rem; font-size: .7rem;
+        padding: .16rem .42rem; border-radius: 3px; border: 1px solid var(--border, #1f242a);
+        color: var(--muted, #7a8088); text-decoration: none; background: var(--surface, #11141a);
+        transition: border-color .1s, color .1s; white-space: nowrap;
+      }
+      .dl-link:hover { border-color: var(--accent, #8be9fd); color: var(--fg, #e8e8e6); }
     </style>
   </head>
   <body>
@@ -25,13 +174,85 @@ const tagline = "Model registry — capabilities, context windows, pricing. Part
       <main class="content">
         <section class="hero">
           <img src="https://brand-atoms.com/dist/brands/atom-family/1.0.0/assets/atom-family-icon.png" alt="atom-family" class="hero-mark" />
-          <h1>{title}</h1>
-          <p class="lede">{tagline}</p>
+          <h1>model-atoms</h1>
+          <p class="lede">AI model definitions canonicalized — capabilities, context windows, pricing, deprecation, tool-use shape, vision support, modality.</p>
         </section>
-        <div class="status">
-          <p><strong>Status:</strong> bootstrap. Catalog content lands once the canonical <code>model</code> schema is published in <a href="https://github.com/convergent-systems-co/schema-atoms">schema-atoms</a>.</p>
-          <p>Source: <a href="https://github.com/convergent-systems-co/model-atoms">github.com/convergent-systems-co/model-atoms</a></p>
+
+        <p style="font-size: 1.125rem; color: var(--muted); max-width: 40rem;">
+          A typed, versioned, composable library of AI model primitives — one source of truth for what a model is, what it can do, and when it goes away. Downstream runtimes stop rebuilding the same capability matrix.
+        </p>
+
+        <ul>
+          <li><strong>{models.length}</strong> model-cards &nbsp;·&nbsp; <strong>{activeCount}</strong> active &nbsp;·&nbsp; <strong>{categories.length}</strong> categories</li>
+          <li><strong>{hfCount}</strong> models with HuggingFace download links</li>
+          <li><strong>7</strong> capability atoms (function-calling, vision, reasoning, lora, batch-processing, real-time, structured-output)</li>
+        </ul>
+
+        <div class="catalog-controls">
+          <input id="cat-search" class="catalog-search" type="search" placeholder="Search models…" autocomplete="off" />
+          <div class="cat-filters">
+            <button class="cat-btn active" data-cat="all">All</button>
+            {categories.map((cat: string) => (
+              <button class="cat-btn" data-cat={cat}>{categoryLabels[cat] ?? cat}</button>
+            ))}
+          </div>
         </div>
+        <div id="catalog-count">{models.length} models</div>
+
+        <div style="overflow-x: auto;">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Category</th>
+                <th>Capabilities</th>
+                <th>Download / Access</th>
+              </tr>
+            </thead>
+            <tbody id="catalog-tbody">
+              {models.map((m: any) => {
+                const hfId = hfIds[m.id];
+                return (
+                  <tr
+                    class={m.planned_deprecation ? 'model-dep' : ''}
+                    data-cat={m.category}
+                    data-name={`${m.name} ${m.vendor} ${m.id}`.toLowerCase()}
+                  >
+                    <td>
+                      <div class="model-id">{m.id.replace('@cf/', '')}</div>
+                      <div class="model-sub">{m.vendor} · {m.family}</div>
+                    </td>
+                    <td><span class="cat-badge">{categoryLabels[m.category] ?? m.category}</span></td>
+                    <td>
+                      <div class="cap-tags">
+                        {(m.capabilities as string[]).map((cap: string) => (
+                          <span class="cap-tag" style={`color:${capColors[cap]??'#aaa'};border-color:${capColors[cap]??'#aaa'}33;background:${capColors[cap]??'#aaa'}11`}>{cap}</span>
+                        ))}
+                      </div>
+                    </td>
+                    <td>
+                      <div class="dl-links">
+                        <a class="dl-link" href={cfUrl(m.id)} target="_blank" rel="noopener">CF Docs ↗</a>
+                        {hfId && <a class="dl-link" href={`https://huggingface.co/${hfId}`} target="_blank" rel="noopener">HuggingFace ↗</a>}
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Civilization-grade properties</h2>
+        <ul>
+          <li><strong>Typed</strong> — every atom validates against a JSON Schema.</li>
+          <li><strong>Versioned</strong> — every atom has a semver <code>version</code> field.</li>
+          <li><strong>Machine-readable</strong> — <a href="/exports/catalog.json">/exports/catalog.json</a> is the canonical manifest.</li>
+          <li><strong>Composable</strong> — model compositions reference atoms by ID.</li>
+          <li><strong>Open</strong> — Apache-2.0 licensed.</li>
+          <li><strong>Durable</strong> — no external dependencies in the hot path.</li>
+        </ul>
+
         <footer>
           Part of the <a href="https://github.com/convergent-systems-co/atoms">atoms ecosystem</a>. Apache-2.0.
         </footer>
@@ -45,5 +266,28 @@ const tagline = "Model registry — capabilities, context windows, pricing. Part
         </div>
       </nav>
     </div>
+
+    <script>
+      const rows  = Array.from(document.querySelectorAll<HTMLTableRowElement>('#catalog-tbody tr'));
+      const count = document.getElementById('catalog-count')!;
+      const input = document.getElementById('cat-search') as HTMLInputElement;
+      const btns  = Array.from(document.querySelectorAll<HTMLButtonElement>('.cat-btn'));
+      let cat = 'all', term = '';
+      function refresh() {
+        let n = 0;
+        for (const r of rows) {
+          const ok = (cat === 'all' || r.dataset.cat === cat) && (!term || (r.dataset.name ?? '').includes(term));
+          r.classList.toggle('hidden', !ok);
+          if (ok) n++;
+        }
+        count.textContent = `${n} model${n !== 1 ? 's' : ''}`;
+      }
+      input.addEventListener('input', () => { term = input.value.toLowerCase().trim(); refresh(); });
+      for (const b of btns) b.addEventListener('click', () => {
+        cat = b.dataset.cat ?? 'all';
+        btns.forEach(x => x.classList.toggle('active', x === b));
+        refresh();
+      });
+    </script>
   </body>
 </html>
