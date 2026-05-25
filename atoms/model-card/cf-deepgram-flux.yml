@@ -1,0 +1,18 @@
+# model-atoms/model-card/cf-deepgram-flux
+id: "cf-deepgram-flux"
+type: "model-card"
+version: "1.0.0"
+name: "Flux ASR"
+description: "First conversational speech recognition model built specifically for voice agents."
+vendor: "Deepgram"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/deepgram/flux"
+family: "Flux ASR"
+category: "automatic-speech-recognition"
+capabilities:
+  - "real-time"
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

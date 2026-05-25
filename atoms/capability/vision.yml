@@ -1,0 +1,13 @@
+# model-atoms/capability/vision
+id: "vision"
+type: "capability"
+version: "1.0.0"
+name: "Vision"
+description: "Ability to process image inputs alongside text for visual recognition, image reasoning, and captioning."
+aliases:
+  - "image-input"
+  - "multimodal-vision"
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T00:00:00Z"

@@ -1,0 +1,17 @@
+# model-atoms/model-card/cf-leonardo-lucid-origin
+id: "cf-leonardo-lucid-origin"
+type: "model-card"
+version: "1.0.0"
+name: "Lucid Origin"
+description: "Most adaptable and prompt-responsive model with strengths in sharp graphic design, full-HD renders, and accurate text rendering."
+vendor: "Leonardo"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/leonardo/lucid-origin"
+family: "Lucid"
+category: "text-to-image"
+capabilities: []
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

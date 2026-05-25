@@ -1,0 +1,17 @@
+# model-atoms/model-card/cf-lykon-dreamshaper-8-lcm
+id: "cf-lykon-dreamshaper-8-lcm"
+type: "model-card"
+version: "1.0.0"
+name: "DreamShaper 8 LCM"
+description: "Stable Diffusion model fine-tuned to be better at photorealism."
+vendor: "Lykon"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/lykon/dreamshaper-8-lcm"
+family: "DreamShaper"
+category: "text-to-image"
+capabilities: []
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

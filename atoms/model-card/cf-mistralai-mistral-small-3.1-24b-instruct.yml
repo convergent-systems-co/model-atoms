@@ -1,0 +1,20 @@
+# model-atoms/model-card/cf-mistralai-mistral-small-3.1-24b-instruct
+id: "cf-mistralai-mistral-small-3.1-24b-instruct"
+type: "model-card"
+version: "1.0.0"
+name: "Mistral Small 3.1 24B Instruct"
+description: "State-of-the-art vision understanding with long context capabilities up to 128k tokens."
+vendor: "MistralAI"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/mistralai/mistral-small-3.1-24b-instruct"
+family: "Mistral Small 3"
+category: "text-generation"
+capabilities:
+  - "function-calling"
+  - "vision"
+planned_deprecation: false
+context_window: 128000
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

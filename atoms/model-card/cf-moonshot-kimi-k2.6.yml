@@ -1,0 +1,21 @@
+# model-atoms/model-card/cf-moonshot-kimi-k2.6
+id: "cf-moonshot-kimi-k2.6"
+type: "model-card"
+version: "1.0.0"
+name: "Kimi K2.6"
+description: "Frontier-scale open-source 1T parameter model with a 262.1k context window, designed for agentic workloads."
+vendor: "Moonshot AI"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/moonshot/kimi-k2.6"
+family: "Kimi K2"
+category: "text-generation"
+capabilities:
+  - "function-calling"
+  - "reasoning"
+  - "vision"
+planned_deprecation: false
+context_window: 262100
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

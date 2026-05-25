@@ -1,0 +1,17 @@
+# model-atoms/model-card/cf-qwen-qwen3-embedding-0.6b
+id: "cf-qwen-qwen3-embedding-0.6b"
+type: "model-card"
+version: "1.0.0"
+name: "Qwen3 Embedding 0.6B"
+description: "Latest Qwen family model specifically designed for text embedding and ranking."
+vendor: "Qwen"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/qwen/qwen3-embedding-0.6b"
+family: "Qwen3 Embedding"
+category: "text-embeddings"
+capabilities: []
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

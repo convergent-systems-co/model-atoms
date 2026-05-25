@@ -1,0 +1,19 @@
+# model-atoms/model-card/cf-deepgram-aura-2-en
+id: "cf-deepgram-aura-2-en"
+type: "model-card"
+version: "1.0.0"
+name: "Aura 2 EN"
+description: "Context-aware English text-to-speech model that applies natural pacing, expressiveness, and fillers based on context."
+vendor: "Deepgram"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/deepgram/aura-2-en"
+family: "Aura 2"
+category: "text-to-speech"
+capabilities:
+  - "batch-processing"
+  - "real-time"
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

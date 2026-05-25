@@ -1,0 +1,20 @@
+# model-atoms/model-card/cf-meta-llama-4-scout-17b-16e-instruct
+id: "cf-meta-llama-4-scout-17b-16e-instruct"
+type: "model-card"
+version: "1.0.0"
+name: "Llama 4 Scout 17B 16E Instruct"
+description: "17 billion parameter natively multimodal model with 16 experts (mixture-of-experts architecture)."
+vendor: "Meta"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/meta/llama-4-scout-17b-16e-instruct"
+family: "Llama 4"
+category: "text-generation"
+capabilities:
+  - "batch-processing"
+  - "function-calling"
+  - "vision"
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

@@ -1,0 +1,19 @@
+# model-atoms/model-card/cf-openai-gpt-oss-20b
+id: "cf-openai-gpt-oss-20b"
+type: "model-card"
+version: "1.0.0"
+name: "GPT OSS 20B"
+description: "Open-weight model optimized for lower latency and local or specialized use cases."
+vendor: "OpenAI"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/openai/gpt-oss-20b"
+family: "GPT OSS"
+category: "text-generation"
+capabilities:
+  - "function-calling"
+  - "reasoning"
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

@@ -1,0 +1,18 @@
+# model-atoms/model-card/cf-unum-uform-gen2-qwen-500m
+id: "cf-unum-uform-gen2-qwen-500m"
+type: "model-card"
+version: "1.0.0"
+name: "UForm Gen2 Qwen 500M"
+description: "Small generative vision-language model primarily designed for image captioning and visual question answering."
+vendor: "Unum"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/unum/uform-gen2-qwen-500m"
+family: "UForm"
+category: "image-to-text"
+capabilities:
+  - "vision"
+planned_deprecation: true
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

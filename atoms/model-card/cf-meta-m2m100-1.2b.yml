@@ -1,0 +1,18 @@
+# model-atoms/model-card/cf-meta-m2m100-1.2b
+id: "cf-meta-m2m100-1.2b"
+type: "model-card"
+version: "1.0.0"
+name: "M2M-100 1.2B"
+description: "Multilingual encoder-decoder model trained for many-to-many multilingual translation."
+vendor: "Meta"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/meta/m2m100-1.2b"
+family: "M2M-100"
+category: "translation"
+capabilities:
+  - "batch-processing"
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

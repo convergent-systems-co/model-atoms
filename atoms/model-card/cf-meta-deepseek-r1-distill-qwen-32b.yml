@@ -1,0 +1,18 @@
+# model-atoms/model-card/cf-meta-deepseek-r1-distill-qwen-32b
+id: "cf-meta-deepseek-r1-distill-qwen-32b"
+type: "model-card"
+version: "1.0.0"
+name: "DeepSeek R1 Distill Qwen 32B"
+description: "Distilled from DeepSeek-R1 based on Qwen2.5; outperforms OpenAI o1-mini on several benchmarks."
+vendor: "DeepSeek"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/meta/deepseek-r1-distill-qwen-32b"
+family: "DeepSeek R1"
+category: "text-generation"
+capabilities:
+  - "reasoning"
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"
