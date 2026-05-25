@@ -1,0 +1,21 @@
+---
+import Base from "../../layouts/Base.astro";
+import AtomCard from "../../components/AtomCard.astro";
+import catalog from "../../../public/exports/catalog.json";
+
+const atoms = catalog.atoms
+  .filter((a: any) => a.type === "model-card")
+  .sort((a: any, b: any) => a.id.localeCompare(b.id));
+---
+<Base title="Model Cards" description="Model card atoms — canonical AI model definitions with capabilities, context windows, and deprecation policy.">
+  <h1>Model Cards</h1>
+  <p>{atoms.length} model card atom{atoms.length === 1 ? "" : "s"} — each defines a canonical AI model definition.</p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1rem; margin-top: 2rem;">
+    {atoms.map((atom: any) => <AtomCard atom={atom} />)}
+  </div>
+
+  {atoms.length === 0 && (
+    <p style="color: var(--muted); margin-top: 2rem;">No model-card atoms seeded yet. See <a href="/install/">install</a> to contribute.</p>
+  )}
+</Base>
