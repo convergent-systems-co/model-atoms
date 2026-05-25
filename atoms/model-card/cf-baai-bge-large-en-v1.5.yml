@@ -1,0 +1,19 @@
+# model-atoms/model-card/cf-baai-bge-large-en-v1.5
+id: "cf-baai-bge-large-en-v1.5"
+type: "model-card"
+version: "1.0.0"
+name: "BGE Large EN v1.5"
+description: "General embedding large model transforming text into 1024-dimensional vectors."
+vendor: "BAAI"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/baai/bge-large-en-v1.5"
+family: "BGE"
+category: "text-embeddings"
+capabilities:
+  - "batch-processing"
+planned_deprecation: false
+output_dimensions: 1024
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

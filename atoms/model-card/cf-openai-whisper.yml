@@ -1,0 +1,17 @@
+# model-atoms/model-card/cf-openai-whisper
+id: "cf-openai-whisper"
+type: "model-card"
+version: "1.0.0"
+name: "Whisper"
+description: "General-purpose speech recognition model supporting multilingual recognition, speech translation, and language identification."
+vendor: "OpenAI"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/openai/whisper"
+family: "Whisper"
+category: "automatic-speech-recognition"
+capabilities: []
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

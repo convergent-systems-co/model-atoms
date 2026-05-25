@@ -1,0 +1,18 @@
+# model-atoms/model-card/cf-google-gemma-7b-it
+id: "cf-google-gemma-7b-it"
+type: "model-card"
+version: "1.0.0"
+name: "Gemma 7B IT"
+description: "Lightweight, state-of-the-art open model built from the same research and technology as Gemini models."
+vendor: "Google"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/google/gemma-7b-it"
+family: "Gemma"
+category: "text-generation"
+capabilities:
+  - "lora"
+planned_deprecation: true
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

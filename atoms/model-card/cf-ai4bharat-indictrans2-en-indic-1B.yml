@@ -1,0 +1,17 @@
+# model-atoms/model-card/cf-ai4bharat-indictrans2-en-indic-1B
+id: "cf-ai4bharat-indictrans2-en-indic-1B"
+type: "model-card"
+version: "1.0.0"
+name: "IndicTrans2 EN-Indic 1B"
+description: "First open-source transformer-based multilingual NMT model supporting high-quality translation across all 22 scheduled Indic languages."
+vendor: "AI4Bharat"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/ai4bharat/indictrans2-en-indic-1B"
+family: "IndicTrans2"
+category: "translation"
+capabilities: []
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

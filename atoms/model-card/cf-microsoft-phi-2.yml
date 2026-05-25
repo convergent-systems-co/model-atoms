@@ -1,0 +1,17 @@
+# model-atoms/model-card/cf-microsoft-phi-2
+id: "cf-microsoft-phi-2"
+type: "model-card"
+version: "1.0.0"
+name: "Phi-2"
+description: "Transformer-based model with next-word prediction objective, trained on 1.4T tokens from web and synthetic sources."
+vendor: "Microsoft"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/microsoft/phi-2"
+family: "Phi"
+category: "text-generation"
+capabilities: []
+planned_deprecation: true
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

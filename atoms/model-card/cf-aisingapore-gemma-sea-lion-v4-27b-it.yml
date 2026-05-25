@@ -1,0 +1,17 @@
+# model-atoms/model-card/cf-aisingapore-gemma-sea-lion-v4-27b-it
+id: "cf-aisingapore-gemma-sea-lion-v4-27b-it"
+type: "model-card"
+version: "1.0.0"
+name: "Gemma SEA-LION v4 27B IT"
+description: "Southeast Asian Languages In One Network — LLMs pretrained and instruct-tuned for the Southeast Asia region."
+vendor: "AI Singapore"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/aisingapore/gemma-sea-lion-v4-27b-it"
+family: "SEA-LION"
+category: "text-generation"
+capabilities: []
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

@@ -1,0 +1,13 @@
+# model-atoms/capability/lora
+id: "lora"
+type: "capability"
+version: "1.0.0"
+name: "LoRA"
+description: "Supports inference with Low-Rank Adaptation (LoRA) fine-tuning adapters overlaid on base model weights at inference time."
+aliases:
+  - "lora-inference"
+  - "adapter-inference"
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T00:00:00Z"

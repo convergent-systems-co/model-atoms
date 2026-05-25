@@ -1,0 +1,17 @@
+# model-atoms/model-card/cf-baai-bge-reranker-base
+id: "cf-baai-bge-reranker-base"
+type: "model-card"
+version: "1.0.0"
+name: "BGE Reranker Base"
+description: "Reranker model that takes question and document as input and outputs a relevance similarity score."
+vendor: "BAAI"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/baai/bge-reranker-base"
+family: "BGE"
+category: "text-classification"
+capabilities: []
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"

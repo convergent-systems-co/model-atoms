@@ -1,0 +1,18 @@
+# model-atoms/model-card/cf-llava-hf-llava-1.5-7b-hf
+id: "cf-llava-hf-llava-1.5-7b-hf"
+type: "model-card"
+version: "1.0.0"
+name: "LLaVA 1.5 7B HF"
+description: "Open-source multimodal chatbot trained by fine-tuning LLaMA/Vicuna on visual instruction data; supports image captioning and visual question answering."
+vendor: "LLaVA"
+provider: "Cloudflare Workers AI"
+provider_id: "@cf/llava-hf/llava-1.5-7b-hf"
+family: "LLaVA 1.5"
+category: "image-to-text"
+capabilities:
+  - "vision"
+planned_deprecation: false
+provenance:
+  source: "https://developers.cloudflare.com/workers-ai/models/"
+  addedBy: "convergent-systems-co"
+  addedAt: "2026-05-25T15:39:11Z"
