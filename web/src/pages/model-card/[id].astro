@@ -1,0 +1,53 @@
+---
+import Base from "../../layouts/Base.astro";
+import catalog from "../../../public/exports/catalog.json";
+
+export function getStaticPaths() {
+  return catalog.atoms
+    .filter((atom: any) => atom.type === "model-card")
+    .map((atom: any) => ({
+      params: { id: atom.id },
+      props: { atom },
+    }));
+}
+
+const { atom } = Astro.props;
+
+const card = atom.model_card;
+---
+<Base title={atom.name} description={atom.description ?? "model-card atom"}>
+  <p><a href="/model-card/">← All model cards</a></p>
+  <h1>{atom.name}</h1>
+  <p style="color: var(--muted);">
+    <code>{atom.type}</code> · <code>v{atom.version}</code>
+  </p>
+
+  {atom.description && <p>{atom.description}</p>}
+
+  {card && (
+    <section>
+      <h2>Model details</h2>
+      <dl style="display: grid; grid-template-columns: max-content 1fr; gap: 0.5rem 1rem;">
+        {card.provider && (<><dt>Provider</dt><dd>{card.provider}</dd></>)}
+        {card.context_window && (<><dt>Context window</dt><dd>{card.context_window.toLocaleString()} tokens</dd></>)}
+        {card.modalities && card.modalities.length > 0 && (<><dt>Modalities</dt><dd>{card.modalities.join(", ")}</dd></>)}
+        {card.tool_use && (<><dt>Tool use</dt><dd>{card.tool_use}</dd></>)}
+        {card.vision && (<><dt>Vision</dt><dd>{card.vision ? "yes" : "no"}</dd></>)}
+      </dl>
+    </section>
+  )}
+
+  {atom.tags && atom.tags.length > 0 && (
+    <p>
+      Tags: {atom.tags.map((tag: string) => (
+        <span style="display: inline-block; font-size: 0.875rem; background: #f4ece4; padding: 0.125rem 0.5rem; border-radius: 0.25rem; margin-right: 0.25rem;">{tag}</span>
+      ))}
+    </p>
+  )}
+
+  <h2>Raw atom</h2>
+  <p>
+    <a href={`/atoms/${atom.type}/${atom.id}.json`}>/atoms/{atom.type}/{atom.id}.json</a>
+    · <a href="/schemas/atom-v1.json">schema</a>
+  </p>
+</Base>
