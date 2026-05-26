@@ -1,0 +1,21 @@
+{
+  "id": "cf-openai-whisper-large-v3-turbo",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Whisper Large v3 Turbo",
+  "description": "Pre-trained model for automatic speech recognition (ASR) and speech translation.",
+  "vendor": "OpenAI",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/openai/whisper-large-v3-turbo",
+  "family": "Whisper",
+  "category": "automatic-speech-recognition",
+  "capabilities": [
+    "batch-processing"
+  ],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

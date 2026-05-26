@@ -1,0 +1,16 @@
+{
+  "id": "batch-processing",
+  "type": "capability",
+  "version": "1.0.0",
+  "name": "Batch Processing",
+  "description": "Supports batched inference requests processed asynchronously at reduced cost, with results retrieved after processing completes.",
+  "aliases": [
+    "batch",
+    "async-batch"
+  ],
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T00:00:00Z"
+  }
+}

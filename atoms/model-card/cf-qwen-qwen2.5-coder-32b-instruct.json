@@ -1,0 +1,21 @@
+{
+  "id": "cf-qwen-qwen2.5-coder-32b-instruct",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Qwen2.5 Coder 32B Instruct",
+  "description": "Code-specific large language model supporting six mainstream model sizes from 0.5B to 32B parameters.",
+  "vendor": "Qwen",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/qwen/qwen2.5-coder-32b-instruct",
+  "family": "Qwen 2.5 Coder",
+  "category": "text-generation",
+  "capabilities": [
+    "lora"
+  ],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

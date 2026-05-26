@@ -1,0 +1,21 @@
+{
+  "id": "cf-meta-llama-guard-3-8b",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Llama Guard 3 8B",
+  "description": "Llama 3.1 8B fine-tuned for content safety classification in both LLM inputs and responses.",
+  "vendor": "Meta",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/meta/llama-guard-3-8b",
+  "family": "Llama Guard",
+  "category": "text-classification",
+  "capabilities": [
+    "lora"
+  ],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

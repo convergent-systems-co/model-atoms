@@ -1,0 +1,23 @@
+{
+  "id": "cf-google-gemma-4-26b-a4b-it",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Gemma 4 26B A4B IT",
+  "description": "Google's most intelligent family of open models, derived from Gemini 3 research.",
+  "vendor": "Google",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/google/gemma-4-26b-a4b-it",
+  "family": "Gemma 4",
+  "category": "text-generation",
+  "capabilities": [
+    "function-calling",
+    "reasoning",
+    "vision"
+  ],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

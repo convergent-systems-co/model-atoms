@@ -1,0 +1,22 @@
+{
+  "id": "cf-mistralai-mistral-7b-instruct-v0.2",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Mistral 7B Instruct v0.2",
+  "description": "32k context window instruct model with updated rope-theta and no sliding-window attention.",
+  "vendor": "MistralAI",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/mistralai/mistral-7b-instruct-v0.2",
+  "family": "Mistral 7B",
+  "category": "text-generation",
+  "capabilities": [
+    "lora"
+  ],
+  "planned_deprecation": true,
+  "context_window": 32000,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

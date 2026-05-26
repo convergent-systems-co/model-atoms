@@ -1,0 +1,16 @@
+{
+  "id": "real-time",
+  "type": "capability",
+  "version": "1.0.0",
+  "name": "Real-Time",
+  "description": "Supports streaming output or real-time bidirectional interaction with low latency, suitable for voice agents and interactive UIs.",
+  "aliases": [
+    "streaming",
+    "real-time-streaming"
+  ],
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T00:00:00Z"
+  }
+}

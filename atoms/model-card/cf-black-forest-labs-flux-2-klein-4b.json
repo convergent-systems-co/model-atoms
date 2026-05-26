@@ -1,0 +1,19 @@
+{
+  "id": "cf-black-forest-labs-flux-2-klein-4b",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "FLUX 2 Klein 4B",
+  "description": "Ultra-fast distilled image model delivering state-of-the-art quality for interactive workflows and real-time previews.",
+  "vendor": "Black Forest Labs",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/black-forest-labs/flux-2-klein-4b",
+  "family": "FLUX 2",
+  "category": "text-to-image",
+  "capabilities": [],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

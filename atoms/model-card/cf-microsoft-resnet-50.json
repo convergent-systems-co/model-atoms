@@ -1,0 +1,19 @@
+{
+  "id": "cf-microsoft-resnet-50",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "ResNet-50",
+  "description": "50 layers deep image classification CNN trained on more than 1 million images from the ImageNet dataset.",
+  "vendor": "Microsoft",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/microsoft/resnet-50",
+  "family": "ResNet",
+  "category": "image-classification",
+  "capabilities": [],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

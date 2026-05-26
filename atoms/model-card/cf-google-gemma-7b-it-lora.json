@@ -1,0 +1,21 @@
+{
+  "id": "cf-google-gemma-7b-it-lora",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Gemma 7B IT LoRA",
+  "description": "Gemma 7B base model dedicated for inference with LoRA adapters.",
+  "vendor": "Google",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/google/gemma-7b-it-lora",
+  "family": "Gemma",
+  "category": "text-generation",
+  "capabilities": [
+    "lora"
+  ],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

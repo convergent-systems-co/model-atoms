@@ -1,0 +1,21 @@
+{
+  "id": "cf-meta-llama-2-7b-chat-hf-lora",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Llama 2 7B Chat HF LoRA",
+  "description": "Llama 2 base model dedicated for inference with LoRA adapters.",
+  "vendor": "Meta",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/meta/llama-2-7b-chat-hf-lora",
+  "family": "Llama 2",
+  "category": "text-generation",
+  "capabilities": [
+    "lora"
+  ],
+  "planned_deprecation": true,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

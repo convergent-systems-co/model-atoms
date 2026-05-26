@@ -1,0 +1,19 @@
+{
+  "id": "cf-stabilityai-stable-diffusion-xl-base-1.0",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Stable Diffusion XL Base 1.0",
+  "description": "Diffusion-based text-to-image model that generates and modifies images based on text prompts.",
+  "vendor": "Stability AI",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/stabilityai/stable-diffusion-xl-base-1.0",
+  "family": "Stable Diffusion XL",
+  "category": "text-to-image",
+  "capabilities": [],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

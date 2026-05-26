@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://model-atoms.com/schemas/atom-v1.json",
+  "title": "model-atoms v1 atom",
+  "description": "Generic envelope for any model-atoms atom. Each type (model-card, capability, etc.) has its own detailed schema; this validates the common required fields present on every atom.",
+  "type": "object",
+  "required": ["id", "type", "version", "name"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Slug identifier for this atom, e.g. 'cf-meta-llama-4-scout-17b-16e-instruct'."
+    },
+    "type": {
+      "type": "string",
+      "description": "Atom type discriminator.",
+      "enum": [
+        "model-card",
+        "capability",
+        "pricing-tier",
+        "deprecation-policy",
+        "tool-use-shape",
+        "modality"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "description": "SemVer string for this atom revision.",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable display name."
+    },
+    "description": {
+      "type": "string"
+    },
+    "vendor": {
+      "type": "string",
+      "description": "Organisation that created the model (model-card atoms)."
+    },
+    "provider": {
+      "type": "string",
+      "description": "Service that hosts the model (model-card atoms)."
+    },
+    "provider_id": {
+      "type": "string",
+      "description": "Provider's canonical model identifier (model-card atoms)."
+    },
+    "family": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "context_window": {
+      "type": "integer",
+      "description": "Maximum context length in tokens (raw token count)."
+    },
+    "output_dimensions": {
+      "type": "integer",
+      "description": "Embedding output dimensions (embedding model atoms)."
+    },
+    "planned_deprecation": {
+      "type": "boolean"
+    },
+    "aliases": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Alternative names for this atom (capability atoms)."
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "source": { "type": "string" },
+        "addedBy": { "type": "string" },
+        "addedAt": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,8 +1,1695 @@
 {
   "catalog": "model-atoms",
   "version": "0.1.0",
-  "built_at": "2026-05-26T15:44:30+00:00",
-  "atoms": [],
+  "built_at": "2026-05-26T16:04:46+00:00",
+  "atoms": [
+    {
+      "id": "batch-processing",
+      "type": "capability",
+      "version": "1.0.0",
+      "name": "Batch Processing",
+      "description": "Supports batched inference requests processed asynchronously at reduced cost, with results retrieved after processing completes.",
+      "aliases": [
+        "batch",
+        "async-batch"
+      ],
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T00:00:00Z"
+      }
+    },
+    {
+      "id": "function-calling",
+      "type": "capability",
+      "version": "1.0.0",
+      "name": "Function Calling",
+      "description": "Ability to invoke structured tool definitions from model output. Enables agentic workflows where the model selects and calls tools based on context.",
+      "aliases": [
+        "tool-use",
+        "tool-calling"
+      ],
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T00:00:00Z"
+      }
+    },
+    {
+      "id": "lora",
+      "type": "capability",
+      "version": "1.0.0",
+      "name": "LoRA",
+      "description": "Supports inference with Low-Rank Adaptation (LoRA) fine-tuning adapters overlaid on base model weights at inference time.",
+      "aliases": [
+        "lora-inference",
+        "adapter-inference"
+      ],
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T00:00:00Z"
+      }
+    },
+    {
+      "id": "real-time",
+      "type": "capability",
+      "version": "1.0.0",
+      "name": "Real-Time",
+      "description": "Supports streaming output or real-time bidirectional interaction with low latency, suitable for voice agents and interactive UIs.",
+      "aliases": [
+        "streaming",
+        "real-time-streaming"
+      ],
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T00:00:00Z"
+      }
+    },
+    {
+      "id": "reasoning",
+      "type": "capability",
+      "version": "1.0.0",
+      "name": "Reasoning",
+      "description": "Enhanced chain-of-thought reasoning that produces step-by-step thinking before a final answer, improving accuracy on complex tasks.",
+      "aliases": [
+        "extended-thinking",
+        "chain-of-thought"
+      ],
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T00:00:00Z"
+      }
+    },
+    {
+      "id": "structured-output",
+      "type": "capability",
+      "version": "1.0.0",
+      "name": "Structured Output",
+      "description": "Guarantees model output conforms to a caller-supplied JSON Schema or equivalent structure, stronger than JSON mode alone.",
+      "aliases": [
+        "json-mode",
+        "json-schema-output"
+      ],
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T00:00:00Z"
+      }
+    },
+    {
+      "id": "vision",
+      "type": "capability",
+      "version": "1.0.0",
+      "name": "Vision",
+      "description": "Ability to process image inputs alongside text for visual recognition, image reasoning, and captioning.",
+      "aliases": [
+        "image-input",
+        "multimodal-vision"
+      ],
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T00:00:00Z"
+      }
+    },
+    {
+      "id": "cf-ai4bharat-indictrans2-en-indic-1B",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "IndicTrans2 EN-Indic 1B",
+      "description": "First open-source transformer-based multilingual NMT model supporting high-quality translation across all 22 scheduled Indic languages.",
+      "vendor": "AI4Bharat",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/ai4bharat/indictrans2-en-indic-1B",
+      "family": "IndicTrans2",
+      "category": "translation",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-aisingapore-gemma-sea-lion-v4-27b-it",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Gemma SEA-LION v4 27B IT",
+      "description": "Southeast Asian Languages In One Network — LLMs pretrained and instruct-tuned for the Southeast Asia region.",
+      "vendor": "AI Singapore",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/aisingapore/gemma-sea-lion-v4-27b-it",
+      "family": "SEA-LION",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-baai-bge-base-en-v1.5",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "BGE Base EN v1.5",
+      "description": "General embedding base model transforming text into 768-dimensional vectors.",
+      "vendor": "BAAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/baai/bge-base-en-v1.5",
+      "family": "BGE",
+      "category": "text-embeddings",
+      "capabilities": [
+        "batch-processing"
+      ],
+      "planned_deprecation": false,
+      "output_dimensions": 768,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-baai-bge-large-en-v1.5",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "BGE Large EN v1.5",
+      "description": "General embedding large model transforming text into 1024-dimensional vectors.",
+      "vendor": "BAAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/baai/bge-large-en-v1.5",
+      "family": "BGE",
+      "category": "text-embeddings",
+      "capabilities": [
+        "batch-processing"
+      ],
+      "planned_deprecation": false,
+      "output_dimensions": 1024,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-baai-bge-m3",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "BGE M3",
+      "description": "Multi-functionality, multi-linguality, and multi-granularity embedding model.",
+      "vendor": "BAAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/baai/bge-m3",
+      "family": "BGE",
+      "category": "text-embeddings",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-baai-bge-reranker-base",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "BGE Reranker Base",
+      "description": "Reranker model that takes question and document as input and outputs a relevance similarity score.",
+      "vendor": "BAAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/baai/bge-reranker-base",
+      "family": "BGE",
+      "category": "text-classification",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-baai-bge-small-en-v1.5",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "BGE Small EN v1.5",
+      "description": "General embedding small model transforming text into 384-dimensional vectors.",
+      "vendor": "BAAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/baai/bge-small-en-v1.5",
+      "family": "BGE",
+      "category": "text-embeddings",
+      "capabilities": [
+        "batch-processing"
+      ],
+      "planned_deprecation": false,
+      "output_dimensions": 384,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-black-forest-labs-flux-1-schnell",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "FLUX 1 Schnell",
+      "description": "12 billion parameter rectified flow transformer capable of generating images from text descriptions.",
+      "vendor": "Black Forest Labs",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/black-forest-labs/flux-1-schnell",
+      "family": "FLUX 1",
+      "category": "text-to-image",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-black-forest-labs-flux-2-dev",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "FLUX 2 Dev",
+      "description": "Image model capable of generating highly realistic and detailed images with multi-reference support.",
+      "vendor": "Black Forest Labs",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/black-forest-labs/flux-2-dev",
+      "family": "FLUX 2",
+      "category": "text-to-image",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-black-forest-labs-flux-2-klein-4b",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "FLUX 2 Klein 4B",
+      "description": "Ultra-fast distilled image model delivering state-of-the-art quality for interactive workflows and real-time previews.",
+      "vendor": "Black Forest Labs",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/black-forest-labs/flux-2-klein-4b",
+      "family": "FLUX 2",
+      "category": "text-to-image",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-black-forest-labs-flux-2-klein-9b",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "FLUX 2 Klein 9B",
+      "description": "Ultra-fast distilled image model with enhanced quality; unifies image generation and editing in a single model.",
+      "vendor": "Black Forest Labs",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/black-forest-labs/flux-2-klein-9b",
+      "family": "FLUX 2",
+      "category": "text-to-image",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-bytedance-stable-diffusion-xl-lightning",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Stable Diffusion XL Lightning",
+      "description": "Lightning-fast text-to-image generation model capable of producing high-quality 1024px images in a few steps.",
+      "vendor": "ByteDance",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/bytedance/stable-diffusion-xl-lightning",
+      "family": "Stable Diffusion XL Lightning",
+      "category": "text-to-image",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-deepgram-aura-1",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Aura 1",
+      "description": "Context-aware text-to-speech model applying natural pacing and expressiveness.",
+      "vendor": "Deepgram",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/deepgram/aura-1",
+      "family": "Aura",
+      "category": "text-to-speech",
+      "capabilities": [
+        "batch-processing",
+        "real-time"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-deepgram-aura-2-en",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Aura 2 EN",
+      "description": "Context-aware English text-to-speech model that applies natural pacing, expressiveness, and fillers based on context.",
+      "vendor": "Deepgram",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/deepgram/aura-2-en",
+      "family": "Aura 2",
+      "category": "text-to-speech",
+      "capabilities": [
+        "batch-processing",
+        "real-time"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-deepgram-aura-2-es",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Aura 2 ES",
+      "description": "Context-aware Spanish text-to-speech model that applies natural pacing, expressiveness, and fillers based on context.",
+      "vendor": "Deepgram",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/deepgram/aura-2-es",
+      "family": "Aura 2",
+      "category": "text-to-speech",
+      "capabilities": [
+        "batch-processing",
+        "real-time"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-deepgram-flux",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Flux ASR",
+      "description": "First conversational speech recognition model built specifically for voice agents.",
+      "vendor": "Deepgram",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/deepgram/flux",
+      "family": "Flux ASR",
+      "category": "automatic-speech-recognition",
+      "capabilities": [
+        "real-time"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-deepgram-nova-3",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Nova 3",
+      "description": "Deepgram speech-to-text model for transcribing audio.",
+      "vendor": "Deepgram",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/deepgram/nova-3",
+      "family": "Nova",
+      "category": "automatic-speech-recognition",
+      "capabilities": [
+        "batch-processing",
+        "real-time"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-defog-sqlcoder-7b-2",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "SQLCoder 7B 2",
+      "description": "SQL-specialized model designed to help non-technical users understand and query data in SQL databases.",
+      "vendor": "Defog",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/defog/sqlcoder-7b-2",
+      "family": "SQLCoder",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-google-embeddinggemma-300m",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Embedding Gemma 300M",
+      "description": "300M parameter state-of-the-art open embedding model producing vector representations for search and retrieval; trained with data in 100+ languages.",
+      "vendor": "Google",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/google/embeddinggemma-300m",
+      "family": "Embedding Gemma",
+      "category": "text-embeddings",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-google-gemma-2b-it-lora",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Gemma 2B IT LoRA",
+      "description": "Gemma 2B base model dedicated for inference with LoRA adapters.",
+      "vendor": "Google",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/google/gemma-2b-it-lora",
+      "family": "Gemma",
+      "category": "text-generation",
+      "capabilities": [
+        "lora"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-google-gemma-3-12b-it",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Gemma 3 12B IT",
+      "description": "128K context window model with multilingual support in over 140 languages; handles text and image input.",
+      "vendor": "Google",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/google/gemma-3-12b-it",
+      "family": "Gemma 3",
+      "category": "text-generation",
+      "capabilities": [
+        "lora"
+      ],
+      "planned_deprecation": true,
+      "context_window": 128000,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-google-gemma-4-26b-a4b-it",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Gemma 4 26B A4B IT",
+      "description": "Google's most intelligent family of open models, derived from Gemini 3 research.",
+      "vendor": "Google",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/google/gemma-4-26b-a4b-it",
+      "family": "Gemma 4",
+      "category": "text-generation",
+      "capabilities": [
+        "function-calling",
+        "reasoning",
+        "vision"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-google-gemma-7b-it-lora",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Gemma 7B IT LoRA",
+      "description": "Gemma 7B base model dedicated for inference with LoRA adapters.",
+      "vendor": "Google",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/google/gemma-7b-it-lora",
+      "family": "Gemma",
+      "category": "text-generation",
+      "capabilities": [
+        "lora"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-google-gemma-7b-it",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Gemma 7B IT",
+      "description": "Lightweight, state-of-the-art open model built from the same research and technology as Gemini models.",
+      "vendor": "Google",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/google/gemma-7b-it",
+      "family": "Gemma",
+      "category": "text-generation",
+      "capabilities": [
+        "lora"
+      ],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-huggingface-distilbert-sst-2-int8",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "DistilBERT SST-2 INT8",
+      "description": "Distilled BERT model fine-tuned on SST-2 for sentiment classification.",
+      "vendor": "HuggingFace",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/huggingface/distilbert-sst-2-int8",
+      "family": "DistilBERT",
+      "category": "text-classification",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-ibm-granite-4.0-h-micro",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Granite 4.0 H Micro",
+      "description": "Industry-leading results in agentic tasks including instruction following and function calling; suited for RAG, multi-agent workflows, and edge deployments.",
+      "vendor": "IBM",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/ibm/granite-4.0-h-micro",
+      "family": "Granite 4.0",
+      "category": "text-generation",
+      "capabilities": [
+        "function-calling"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-leonardo-lucid-origin",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Lucid Origin",
+      "description": "Most adaptable and prompt-responsive model with strengths in sharp graphic design, full-HD renders, and accurate text rendering.",
+      "vendor": "Leonardo",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/leonardo/lucid-origin",
+      "family": "Lucid",
+      "category": "text-to-image",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-leonardo-phoenix-1.0",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Phoenix 1.0",
+      "description": "Generates images with exceptional prompt adherence and coherent text rendering.",
+      "vendor": "Leonardo",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/leonardo/phoenix-1.0",
+      "family": "Phoenix",
+      "category": "text-to-image",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-llava-hf-llava-1.5-7b-hf",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "LLaVA 1.5 7B HF",
+      "description": "Open-source multimodal chatbot trained by fine-tuning LLaMA/Vicuna on visual instruction data; supports image captioning and visual question answering.",
+      "vendor": "LLaVA",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/llava-hf/llava-1.5-7b-hf",
+      "family": "LLaVA 1.5",
+      "category": "image-to-text",
+      "capabilities": [
+        "vision"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-lykon-dreamshaper-8-lcm",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "DreamShaper 8 LCM",
+      "description": "Stable Diffusion model fine-tuned to be better at photorealism.",
+      "vendor": "Lykon",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/lykon/dreamshaper-8-lcm",
+      "family": "DreamShaper",
+      "category": "text-to-image",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-deepseek-r1-distill-qwen-32b",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "DeepSeek R1 Distill Qwen 32B",
+      "description": "Distilled from DeepSeek-R1 based on Qwen2.5; outperforms OpenAI o1-mini on several benchmarks.",
+      "vendor": "DeepSeek",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/deepseek-r1-distill-qwen-32b",
+      "family": "DeepSeek R1",
+      "category": "text-generation",
+      "capabilities": [
+        "reasoning"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-detr-resnet-50",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "DETR ResNet-50",
+      "description": "DETection TRansformer model trained end-to-end on COCO 2017 object detection dataset (118k annotated images).",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/detr-resnet-50",
+      "family": "DETR",
+      "category": "object-detection",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-2-7b-chat-fp16",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 2 7B Chat FP16",
+      "description": "Full precision (fp16) generative text model with 7 billion parameters.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-2-7b-chat-fp16",
+      "family": "Llama 2",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-2-7b-chat-hf-lora",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 2 7B Chat HF LoRA",
+      "description": "Llama 2 base model dedicated for inference with LoRA adapters.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-2-7b-chat-hf-lora",
+      "family": "Llama 2",
+      "category": "text-generation",
+      "capabilities": [
+        "lora"
+      ],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-2-7b-chat-int8",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 2 7B Chat INT8",
+      "description": "Quantized (int8) generative text model with 7 billion parameters.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-2-7b-chat-int8",
+      "family": "Llama 2",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-3-8b-instruct-awq",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 3 8B Instruct AWQ",
+      "description": "Quantized (int4) generative text model with 8 billion parameters.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-3-8b-instruct-awq",
+      "family": "Llama 3",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-3-8b-instruct",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 3 8B Instruct",
+      "description": "State-of-the-art performance on industry benchmarks with improved reasoning capabilities.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-3-8b-instruct",
+      "family": "Llama 3",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-3.1-70b-instruct",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 3.1 70B Instruct",
+      "description": "Large multilingual model optimized for multilingual dialogue use cases.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-3.1-70b-instruct",
+      "family": "Llama 3.1",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-3.1-8b-instruct-awq",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 3.1 8B Instruct AWQ",
+      "description": "Quantized (int4) generative text model with 8 billion parameters.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-3.1-8b-instruct-awq",
+      "family": "Llama 3.1",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-3.1-8b-instruct-fast",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 3.1 8B Instruct Fast",
+      "description": "Fast variant of Llama 3.1 8B optimized for multilingual dialogue use cases.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-3.1-8b-instruct-fast",
+      "family": "Llama 3.1",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-3.1-8b-instruct-fp8",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 3.1 8B Instruct FP8",
+      "description": "Llama 3.1 8B quantized to FP8 precision.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-3.1-8b-instruct-fp8",
+      "family": "Llama 3.1",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-3.1-8b-instruct",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 3.1 8B Instruct",
+      "description": "Multilingual large language model optimized for multilingual dialogue use cases.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-3.1-8b-instruct",
+      "family": "Llama 3.1",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-3.2-11b-vision-instruct",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 3.2 11B Vision Instruct",
+      "description": "Multimodal model optimized for visual recognition, image reasoning, and captioning.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-3.2-11b-vision-instruct",
+      "family": "Llama 3.2",
+      "category": "text-generation",
+      "capabilities": [
+        "lora",
+        "vision"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-3.2-1b-instruct",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 3.2 1B Instruct",
+      "description": "Lightweight model optimized for multilingual dialogue use cases.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-3.2-1b-instruct",
+      "family": "Llama 3.2",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-3.2-3b-instruct",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 3.2 3B Instruct",
+      "description": "Lightweight model optimized for multilingual dialogue including agentic retrieval and summarization.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-3.2-3b-instruct",
+      "family": "Llama 3.2",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-3.3-70b-instruct-fp8-fast",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 3.3 70B Instruct FP8 Fast",
+      "description": "Llama 3.3 70B quantized to fp8 precision and optimized for faster inference.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "family": "Llama 3.3",
+      "category": "text-generation",
+      "capabilities": [
+        "batch-processing",
+        "function-calling"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-4-scout-17b-16e-instruct",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 4 Scout 17B 16E Instruct",
+      "description": "17 billion parameter natively multimodal model with 16 experts (mixture-of-experts architecture).",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-4-scout-17b-16e-instruct",
+      "family": "Llama 4",
+      "category": "text-generation",
+      "capabilities": [
+        "batch-processing",
+        "function-calling",
+        "vision"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-llama-guard-3-8b",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama Guard 3 8B",
+      "description": "Llama 3.1 8B fine-tuned for content safety classification in both LLM inputs and responses.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/llama-guard-3-8b",
+      "family": "Llama Guard",
+      "category": "text-classification",
+      "capabilities": [
+        "lora"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-m2m100-1.2b",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "M2M-100 1.2B",
+      "description": "Multilingual encoder-decoder model trained for many-to-many multilingual translation.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/m2m100-1.2b",
+      "family": "M2M-100",
+      "category": "translation",
+      "capabilities": [
+        "batch-processing"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-meta-meta-llama-3-8b-instruct",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Llama 3 8B Instruct",
+      "description": "State-of-the-art performance on a wide range of industry benchmarks.",
+      "vendor": "Meta",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/meta/meta-llama-3-8b-instruct",
+      "family": "Llama 3",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-microsoft-phi-2",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Phi-2",
+      "description": "Transformer-based model with next-word prediction objective, trained on 1.4T tokens from web and synthetic sources.",
+      "vendor": "Microsoft",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/microsoft/phi-2",
+      "family": "Phi",
+      "category": "text-generation",
+      "capabilities": [],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-microsoft-resnet-50",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "ResNet-50",
+      "description": "50 layers deep image classification CNN trained on more than 1 million images from the ImageNet dataset.",
+      "vendor": "Microsoft",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/microsoft/resnet-50",
+      "family": "ResNet",
+      "category": "image-classification",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-mistralai-mistral-7b-instruct-v0.1",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Mistral 7B Instruct v0.1",
+      "description": "Instruct fine-tuned version of the Mistral-7B model.",
+      "vendor": "MistralAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/mistralai/mistral-7b-instruct-v0.1",
+      "family": "Mistral 7B",
+      "category": "text-generation",
+      "capabilities": [
+        "lora"
+      ],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-mistralai-mistral-7b-instruct-v0.2-lora",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Mistral 7B Instruct v0.2 LoRA",
+      "description": "Mistral 7B instruct v0.2 dedicated for inference with LoRA adapters.",
+      "vendor": "MistralAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/mistralai/mistral-7b-instruct-v0.2-lora",
+      "family": "Mistral 7B",
+      "category": "text-generation",
+      "capabilities": [
+        "lora"
+      ],
+      "planned_deprecation": false,
+      "context_window": 32000,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-mistralai-mistral-7b-instruct-v0.2",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Mistral 7B Instruct v0.2",
+      "description": "32k context window instruct model with updated rope-theta and no sliding-window attention.",
+      "vendor": "MistralAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/mistralai/mistral-7b-instruct-v0.2",
+      "family": "Mistral 7B",
+      "category": "text-generation",
+      "capabilities": [
+        "lora"
+      ],
+      "planned_deprecation": true,
+      "context_window": 32000,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-mistralai-mistral-small-3.1-24b-instruct",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Mistral Small 3.1 24B Instruct",
+      "description": "State-of-the-art vision understanding with long context capabilities up to 128k tokens.",
+      "vendor": "MistralAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+      "family": "Mistral Small 3",
+      "category": "text-generation",
+      "capabilities": [
+        "function-calling",
+        "vision"
+      ],
+      "planned_deprecation": false,
+      "context_window": 128000,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-moonshot-kimi-k2.5",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Kimi K2.5",
+      "description": "Frontier-scale open-source model with a 256k context window.",
+      "vendor": "Moonshot AI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/moonshot/kimi-k2.5",
+      "family": "Kimi K2",
+      "category": "text-generation",
+      "capabilities": [
+        "function-calling",
+        "reasoning",
+        "vision"
+      ],
+      "planned_deprecation": false,
+      "context_window": 256000,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-moonshot-kimi-k2.6",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Kimi K2.6",
+      "description": "Frontier-scale open-source 1T parameter model with a 262.1k context window, designed for agentic workloads.",
+      "vendor": "Moonshot AI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/moonshot/kimi-k2.6",
+      "family": "Kimi K2",
+      "category": "text-generation",
+      "capabilities": [
+        "function-calling",
+        "reasoning",
+        "vision"
+      ],
+      "planned_deprecation": false,
+      "context_window": 262100,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-myshell-melotts",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "MeloTTS",
+      "description": "High-quality multi-lingual text-to-speech library.",
+      "vendor": "MyShell",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/myshell/melotts",
+      "family": "MeloTTS",
+      "category": "text-to-speech",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-nousresearch-hermes-2-pro-mistral-7b",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Hermes 2 Pro Mistral 7B",
+      "description": "Upgraded, retrained version of Nous Hermes 2 with function calling and JSON mode capabilities.",
+      "vendor": "Nous Research",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/nousresearch/hermes-2-pro-mistral-7b",
+      "family": "Hermes 2",
+      "category": "text-generation",
+      "capabilities": [
+        "function-calling"
+      ],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-nvidia-nemotron-3-120b-a12b",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Nemotron 3 120B A12B",
+      "description": "Hybrid MoE model with leading accuracy for multi-agent applications.",
+      "vendor": "NVIDIA",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/nvidia/nemotron-3-120b-a12b",
+      "family": "Nemotron",
+      "category": "text-generation",
+      "capabilities": [
+        "function-calling",
+        "reasoning"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-openai-gpt-oss-120b",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "GPT OSS 120B",
+      "description": "Open-weight model designed for production, general-purpose, high-reasoning use cases.",
+      "vendor": "OpenAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/openai/gpt-oss-120b",
+      "family": "GPT OSS",
+      "category": "text-generation",
+      "capabilities": [
+        "function-calling",
+        "reasoning"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-openai-gpt-oss-20b",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "GPT OSS 20B",
+      "description": "Open-weight model optimized for lower latency and local or specialized use cases.",
+      "vendor": "OpenAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/openai/gpt-oss-20b",
+      "family": "GPT OSS",
+      "category": "text-generation",
+      "capabilities": [
+        "function-calling",
+        "reasoning"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-openai-whisper-large-v3-turbo",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Whisper Large v3 Turbo",
+      "description": "Pre-trained model for automatic speech recognition (ASR) and speech translation.",
+      "vendor": "OpenAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/openai/whisper-large-v3-turbo",
+      "family": "Whisper",
+      "category": "automatic-speech-recognition",
+      "capabilities": [
+        "batch-processing"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-openai-whisper-tiny-en",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Whisper Tiny EN",
+      "description": "English-only version of the Whisper Tiny model trained on speech recognition.",
+      "vendor": "OpenAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/openai/whisper-tiny-en",
+      "family": "Whisper",
+      "category": "automatic-speech-recognition",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-openai-whisper",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Whisper",
+      "description": "General-purpose speech recognition model supporting multilingual recognition, speech translation, and language identification.",
+      "vendor": "OpenAI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/openai/whisper",
+      "family": "Whisper",
+      "category": "automatic-speech-recognition",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-pfnet-plamo-embedding-1b",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "PLaMo Embedding 1B",
+      "description": "Japanese text embedding model that converts Japanese text input into numerical vectors for information retrieval, text classification, and clustering.",
+      "vendor": "Preferred Networks",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/pfnet/plamo-embedding-1b",
+      "family": "PLaMo Embedding",
+      "category": "text-embeddings",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-pipecat-smart-turn-v2",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "SmartTurn v2",
+      "description": "Open source community-driven native audio turn detection model in its second version.",
+      "vendor": "Pipecat",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/pipecat/smart-turn-v2",
+      "family": "SmartTurn",
+      "category": "voice-activity-detection",
+      "capabilities": [
+        "batch-processing",
+        "real-time"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-qwen-qwen2.5-coder-32b-instruct",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Qwen2.5 Coder 32B Instruct",
+      "description": "Code-specific large language model supporting six mainstream model sizes from 0.5B to 32B parameters.",
+      "vendor": "Qwen",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/qwen/qwen2.5-coder-32b-instruct",
+      "family": "Qwen 2.5 Coder",
+      "category": "text-generation",
+      "capabilities": [
+        "lora"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-qwen-qwen3-30b-a3b-fp8",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Qwen3 30B A3B FP8",
+      "description": "Latest generation large language model with groundbreaking advancements in reasoning, instruction-following, and agent capabilities.",
+      "vendor": "Qwen",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "family": "Qwen 3",
+      "category": "text-generation",
+      "capabilities": [
+        "batch-processing",
+        "function-calling",
+        "reasoning"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-qwen-qwen3-embedding-0.6b",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Qwen3 Embedding 0.6B",
+      "description": "Latest Qwen family model specifically designed for text embedding and ranking.",
+      "vendor": "Qwen",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/qwen/qwen3-embedding-0.6b",
+      "family": "Qwen3 Embedding",
+      "category": "text-embeddings",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-qwen-qwq-32b",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "QwQ 32B",
+      "description": "Medium-sized reasoning model capable of thinking deeply for hard problems; competitive with DeepSeek-R1 and o1-mini.",
+      "vendor": "Qwen",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/qwen/qwq-32b",
+      "family": "QwQ",
+      "category": "text-generation",
+      "capabilities": [
+        "lora",
+        "reasoning"
+      ],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-runwayml-stable-diffusion-v1-5-img2img",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Stable Diffusion v1.5 Img2Img",
+      "description": "Generate a new image from an input image using Stable Diffusion.",
+      "vendor": "RunwayML",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/runwayml/stable-diffusion-v1-5-img2img",
+      "family": "Stable Diffusion v1.5",
+      "category": "text-to-image",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-runwayml-stable-diffusion-v1-5-inpainting",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Stable Diffusion v1.5 Inpainting",
+      "description": "Stable Diffusion model with inpainting capability using a mask to selectively edit image regions.",
+      "vendor": "RunwayML",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/runwayml/stable-diffusion-v1-5-inpainting",
+      "family": "Stable Diffusion v1.5",
+      "category": "text-to-image",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-stabilityai-stable-diffusion-xl-base-1.0",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "Stable Diffusion XL Base 1.0",
+      "description": "Diffusion-based text-to-image model that generates and modifies images based on text prompts.",
+      "vendor": "Stability AI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/stabilityai/stable-diffusion-xl-base-1.0",
+      "family": "Stable Diffusion XL",
+      "category": "text-to-image",
+      "capabilities": [],
+      "planned_deprecation": false,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-unum-uform-gen2-qwen-500m",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "UForm Gen2 Qwen 500M",
+      "description": "Small generative vision-language model primarily designed for image captioning and visual question answering.",
+      "vendor": "Unum",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/unum/uform-gen2-qwen-500m",
+      "family": "UForm",
+      "category": "image-to-text",
+      "capabilities": [
+        "vision"
+      ],
+      "planned_deprecation": true,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    },
+    {
+      "id": "cf-zhipu-glm-4.7-flash",
+      "type": "model-card",
+      "version": "1.0.0",
+      "name": "GLM-4.7 Flash",
+      "description": "Fast and efficient multilingual text generation model with a 131,072 token context window supporting 100+ languages.",
+      "vendor": "Zhipu AI",
+      "provider": "Cloudflare Workers AI",
+      "provider_id": "@cf/zhipu/glm-4.7-flash",
+      "family": "GLM-4",
+      "category": "text-generation",
+      "capabilities": [
+        "function-calling",
+        "reasoning"
+      ],
+      "planned_deprecation": false,
+      "context_window": 131072,
+      "provenance": {
+        "source": "https://developers.cloudflare.com/workers-ai/models/",
+        "addedBy": "convergent-systems-co",
+        "addedAt": "2026-05-25T15:39:11Z"
+      }
+    }
+  ],
   "compositions": [],
   "rules": []
 }

@@ -1,0 +1,21 @@
+{
+  "id": "cf-nousresearch-hermes-2-pro-mistral-7b",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Hermes 2 Pro Mistral 7B",
+  "description": "Upgraded, retrained version of Nous Hermes 2 with function calling and JSON mode capabilities.",
+  "vendor": "Nous Research",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/nousresearch/hermes-2-pro-mistral-7b",
+  "family": "Hermes 2",
+  "category": "text-generation",
+  "capabilities": [
+    "function-calling"
+  ],
+  "planned_deprecation": true,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "cf-meta-llama-2-7b-chat-fp16",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Llama 2 7B Chat FP16",
+  "description": "Full precision (fp16) generative text model with 7 billion parameters.",
+  "vendor": "Meta",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/meta/llama-2-7b-chat-fp16",
+  "family": "Llama 2",
+  "category": "text-generation",
+  "capabilities": [],
+  "planned_deprecation": true,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

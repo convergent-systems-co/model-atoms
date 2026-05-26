@@ -1,0 +1,16 @@
+{
+  "id": "function-calling",
+  "type": "capability",
+  "version": "1.0.0",
+  "name": "Function Calling",
+  "description": "Ability to invoke structured tool definitions from model output. Enables agentic workflows where the model selects and calls tools based on context.",
+  "aliases": [
+    "tool-use",
+    "tool-calling"
+  ],
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T00:00:00Z"
+  }
+}

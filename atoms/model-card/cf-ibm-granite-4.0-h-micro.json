@@ -1,0 +1,21 @@
+{
+  "id": "cf-ibm-granite-4.0-h-micro",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Granite 4.0 H Micro",
+  "description": "Industry-leading results in agentic tasks including instruction following and function calling; suited for RAG, multi-agent workflows, and edge deployments.",
+  "vendor": "IBM",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/ibm/granite-4.0-h-micro",
+  "family": "Granite 4.0",
+  "category": "text-generation",
+  "capabilities": [
+    "function-calling"
+  ],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}
