@@ -1,5 +1,4 @@
 ---
-import Base from "../layouts/Base.astro";
 import catalog from '../../../sources/cloudflare-workers-ai.json';
 
 const models = catalog.models as any[];
@@ -99,8 +98,21 @@ const activeCount = models.filter(m => !m.planned_deprecation).length;
 const hfCount = models.filter(m => hfIds[m.id]).length;
 ---
 
-<Base title="Home" description="Browse and compare AI models on Cloudflare Workers AI — capabilities, context windows, and download links.">
-  <style>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Browse and compare AI models on Cloudflare Workers AI — capabilities, context windows, and download links." />
+    <title>model-atoms</title>
+    <link rel="icon" type="image/svg+xml" href="https://brand-atoms.com/dist/brands/atom-family/1.0.0/assets/favicon.svg" />
+    <link rel="preconnect" href="https://brand-atoms.com" />
+    <link rel="stylesheet" href="https://brand-atoms.com/dist/brands/atom-family/1.0.0/css/tokens.css" />
+    <link rel="stylesheet" href="https://brand-atoms.com/dist/brands/atom-family/1.0.0/ui/atoms-catalog.css" />
+    <style>
+      body { min-height: 100vh; }
+      .hero-mark { width: 160px; height: 160px; margin-bottom: 20px; object-fit: contain; }
+      .sidenav-wordmark { width: 140px; object-fit: contain; display: block; }
       /* catalog browser */
       .catalog-controls { display: flex; flex-wrap: wrap; gap: .625rem; align-items: center; margin: 1.5rem 0 .75rem; }
       .catalog-search {
@@ -155,12 +167,15 @@ const hfCount = models.filter(m => hfIds[m.id]).length;
       }
       .dl-link:hover { border-color: var(--accent, #8be9fd); color: var(--fg, #e8e8e6); }
     </style>
-
-  <section style="margin-bottom: 2rem;">
-    <img src="https://brand-atoms.com/dist/brands/atom-family/1.0.0/assets/atom-family-icon.png" alt="atom-family" style="width: 120px; height: 120px; object-fit: contain; margin-bottom: 1rem; display: block;" />
-    <h1>model-atoms</h1>
-    <p style="font-size: 1.25rem; color: var(--muted);">AI model definitions canonicalized — capabilities, context windows, pricing, deprecation, tool-use shape, vision support, modality.</p>
-  </section>
+  </head>
+  <body>
+    <div class="shell">
+      <main class="content">
+        <section class="hero">
+          <img src="https://brand-atoms.com/dist/brands/atom-family/1.0.0/assets/atom-family-icon.png" alt="atom-family" class="hero-mark" />
+          <h1>model-atoms</h1>
+          <p class="lede">AI model definitions canonicalized — capabilities, context windows, pricing, deprecation, tool-use shape, vision support, modality.</p>
+        </section>
 
         <p style="font-size: 1.125rem; color: var(--muted); max-width: 40rem;">
           A typed, versioned, composable library of AI model primitives — one source of truth for what a model is, what it can do, and when it goes away. Downstream runtimes stop rebuilding the same capability matrix.
@@ -237,30 +252,41 @@ const hfCount = models.filter(m => hfIds[m.id]).length;
           <li><strong>Durable</strong> — no external dependencies in the hot path.</li>
         </ul>
 
-  <footer style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.875rem;">
-    Part of the <a href="https://github.com/convergent-systems-co/atoms">atoms ecosystem</a>. Apache-2.0.
-  </footer>
+        <footer>
+          Part of the <a href="https://github.com/convergent-systems-co/atoms">atoms ecosystem</a>. Apache-2.0.
+        </footer>
 
-  <script>
-    const rows  = Array.from(document.querySelectorAll<HTMLTableRowElement>('#catalog-tbody tr'));
-    const count = document.getElementById('catalog-count')!;
-    const input = document.getElementById('cat-search') as HTMLInputElement;
-    const btns  = Array.from(document.querySelectorAll<HTMLButtonElement>('.cat-btn'));
-    let cat = 'all', term = '';
-    function refresh() {
-      let n = 0;
-      for (const r of rows) {
-        const ok = (cat === 'all' || r.dataset.cat === cat) && (!term || (r.dataset.name ?? '').includes(term));
-        r.classList.toggle('hidden', !ok);
-        if (ok) n++;
-      }
-      count.textContent = `${n} model${n !== 1 ? 's' : ''}`;
-    }
-    input.addEventListener('input', () => { term = input.value.toLowerCase().trim(); refresh(); });
-    for (const b of btns) b.addEventListener('click', () => {
-      cat = b.dataset.cat ?? 'all';
-      btns.forEach(x => x.classList.toggle('active', x === b));
-      refresh();
-    });
-  </script>
-</Base>
+        <script>
+          const rows  = Array.from(document.querySelectorAll<HTMLTableRowElement>('#catalog-tbody tr'));
+          const count = document.getElementById('catalog-count')!;
+          const input = document.getElementById('cat-search') as HTMLInputElement;
+          const btns  = Array.from(document.querySelectorAll<HTMLButtonElement>('.cat-btn'));
+          let cat = 'all', term = '';
+          function refresh() {
+            let n = 0;
+            for (const r of rows) {
+              const ok = (cat === 'all' || r.dataset.cat === cat) && (!term || (r.dataset.name ?? '').includes(term));
+              r.classList.toggle('hidden', !ok);
+              if (ok) n++;
+            }
+            count.textContent = `${n} model${n !== 1 ? 's' : ''}`;
+          }
+          input.addEventListener('input', () => { term = input.value.toLowerCase().trim(); refresh(); });
+          for (const b of btns) b.addEventListener('click', () => {
+            cat = b.dataset.cat ?? 'all';
+            btns.forEach(x => x.classList.toggle('active', x === b));
+            refresh();
+          });
+        </script>
+      </main>
+      <nav class="sidenav">
+        <a class="brand" href="/">
+          <img src="https://brand-atoms.com/dist/brands/atom-family/1.0.0/assets/atom-family-wordmark.png" alt="ATOMS" class="sidenav-wordmark" />
+        </a>
+        <div class="aside-meta">
+          <a class="meta-link" href="https://github.com/convergent-systems-co/model-atoms">github ↗</a>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>
