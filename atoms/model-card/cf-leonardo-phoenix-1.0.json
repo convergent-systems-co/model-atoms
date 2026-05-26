@@ -1,0 +1,19 @@
+{
+  "id": "cf-leonardo-phoenix-1.0",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Phoenix 1.0",
+  "description": "Generates images with exceptional prompt adherence and coherent text rendering.",
+  "vendor": "Leonardo",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/leonardo/phoenix-1.0",
+  "family": "Phoenix",
+  "category": "text-to-image",
+  "capabilities": [],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

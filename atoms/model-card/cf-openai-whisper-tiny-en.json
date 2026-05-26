@@ -1,0 +1,19 @@
+{
+  "id": "cf-openai-whisper-tiny-en",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Whisper Tiny EN",
+  "description": "English-only version of the Whisper Tiny model trained on speech recognition.",
+  "vendor": "OpenAI",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/openai/whisper-tiny-en",
+  "family": "Whisper",
+  "category": "automatic-speech-recognition",
+  "capabilities": [],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

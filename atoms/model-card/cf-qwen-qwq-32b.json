@@ -1,0 +1,22 @@
+{
+  "id": "cf-qwen-qwq-32b",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "QwQ 32B",
+  "description": "Medium-sized reasoning model capable of thinking deeply for hard problems; competitive with DeepSeek-R1 and o1-mini.",
+  "vendor": "Qwen",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/qwen/qwq-32b",
+  "family": "QwQ",
+  "category": "text-generation",
+  "capabilities": [
+    "lora",
+    "reasoning"
+  ],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

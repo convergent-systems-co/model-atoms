@@ -1,0 +1,16 @@
+{
+  "id": "reasoning",
+  "type": "capability",
+  "version": "1.0.0",
+  "name": "Reasoning",
+  "description": "Enhanced chain-of-thought reasoning that produces step-by-step thinking before a final answer, improving accuracy on complex tasks.",
+  "aliases": [
+    "extended-thinking",
+    "chain-of-thought"
+  ],
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T00:00:00Z"
+  }
+}

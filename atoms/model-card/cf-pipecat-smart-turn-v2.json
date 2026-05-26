@@ -1,0 +1,22 @@
+{
+  "id": "cf-pipecat-smart-turn-v2",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "SmartTurn v2",
+  "description": "Open source community-driven native audio turn detection model in its second version.",
+  "vendor": "Pipecat",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/pipecat/smart-turn-v2",
+  "family": "SmartTurn",
+  "category": "voice-activity-detection",
+  "capabilities": [
+    "batch-processing",
+    "real-time"
+  ],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

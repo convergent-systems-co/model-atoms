@@ -1,0 +1,22 @@
+{
+  "id": "cf-deepgram-aura-1",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Aura 1",
+  "description": "Context-aware text-to-speech model applying natural pacing and expressiveness.",
+  "vendor": "Deepgram",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/deepgram/aura-1",
+  "family": "Aura",
+  "category": "text-to-speech",
+  "capabilities": [
+    "batch-processing",
+    "real-time"
+  ],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

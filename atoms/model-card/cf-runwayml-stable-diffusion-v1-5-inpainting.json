@@ -1,0 +1,19 @@
+{
+  "id": "cf-runwayml-stable-diffusion-v1-5-inpainting",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "Stable Diffusion v1.5 Inpainting",
+  "description": "Stable Diffusion model with inpainting capability using a mask to selectively edit image regions.",
+  "vendor": "RunwayML",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/runwayml/stable-diffusion-v1-5-inpainting",
+  "family": "Stable Diffusion v1.5",
+  "category": "text-to-image",
+  "capabilities": [],
+  "planned_deprecation": false,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}

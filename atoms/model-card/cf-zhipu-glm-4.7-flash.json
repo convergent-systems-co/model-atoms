@@ -1,0 +1,23 @@
+{
+  "id": "cf-zhipu-glm-4.7-flash",
+  "type": "model-card",
+  "version": "1.0.0",
+  "name": "GLM-4.7 Flash",
+  "description": "Fast and efficient multilingual text generation model with a 131,072 token context window supporting 100+ languages.",
+  "vendor": "Zhipu AI",
+  "provider": "Cloudflare Workers AI",
+  "provider_id": "@cf/zhipu/glm-4.7-flash",
+  "family": "GLM-4",
+  "category": "text-generation",
+  "capabilities": [
+    "function-calling",
+    "reasoning"
+  ],
+  "planned_deprecation": false,
+  "context_window": 131072,
+  "provenance": {
+    "source": "https://developers.cloudflare.com/workers-ai/models/",
+    "addedBy": "convergent-systems-co",
+    "addedAt": "2026-05-25T15:39:11Z"
+  }
+}
